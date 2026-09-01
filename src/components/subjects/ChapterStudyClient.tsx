@@ -22,13 +22,13 @@ import {
   Share2,
   Printer
 } from 'lucide-react';
-import { CHAPTER_TEXTBOOKS, SUBJECTS_INFO } from '@/data/seedData';
+import { getChapterTextbook, SUBJECTS_INFO } from '@/data/seedData';
 import { StudyMode } from '@/types';
 
 export function ChapterStudyClient({ chapterId }: { chapterId: string }) {
   const [studyMode, setStudyMode] = useState<StudyMode>('NORMAL');
 
-  const textbook = CHAPTER_TEXTBOOKS[chapterId] || CHAPTER_TEXTBOOKS['ADMIN-3'];
+  const textbook = getChapterTextbook(chapterId);
   const subject = SUBJECTS_INFO.find(s => s.id === textbook.subjectId) || SUBJECTS_INFO[1];
 
   return (
