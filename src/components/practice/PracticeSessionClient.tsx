@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 
 import { getAllQuestions, saveAnswer, toggleTrapMark, getStoredAnswers } from '@/lib/storage';
+import { SUBJECTS_INFO } from '@/data/seedData';
 import { Question } from '@/types';
 import { OptionExplanationCard } from '@/components/exam/OptionExplanationCard';
 
@@ -37,7 +38,65 @@ export function PracticeSessionClient({ sessionId }: { sessionId: string }) {
 
   useEffect(() => {
     const all = getAllQuestions();
-    setQuestions(all);
+    let filtered: Question[] = [];
+
+    const rawKey = sessionId.startsWith('session-') ? sessionId.replace('session-', '') : sessionId;
+
+    // 1. Paper 1 mock test (paper-1-113, session-paper-1-113, etc.)
+    if (rawKey.startsWith('paper-1')) {
+      const p1Subjects = ['CONST', 'ADMIN', 'CRIM', 'CRIM_PROC', 'PUB_INT_LAW', 'PRIV_INT_LAW', 'LEGAL_ETH'];
+      filtered = all.filter(q => p1Subjects.includes(q.subjectId));
+    }
+    // 2. Paper 2 mock test (paper-2-113, session-paper-2-113, etc.)
+    else if (rawKey.startsWith('paper-2')) {
+      const p2Subjects = ['CIVIL', 'CIVIL_PROC', 'CORP', 'INSUR', 'NEG_INST', 'COMP_EXEC', 'SEC_REG', 'LEGAL_ENG'];
+      filtered = all.filter(q => p2Subjects.includes(q.subjectId));
+    }
+    // 3. Specific subject practice (session-ADMIN, session-CONST, session-CRIM, session-CIVIL, etc.)
+    else if (SUBJECTS_INFO.some(s => s.id === rawKey)) {
+      filtered = all.filter(q => q.subjectId === rawKey);
+    }
+    // 4. Chapter-level practice (session-ADMIN-1, session-ADMIN-3, session-CRIM_PROC-7, etc.)
+    else if (rawKey.includes('-') && !rawKey.startsWith('113-') && !rawKey.startsWith('112-') && !rawKey.startsWith('111-') && !rawKey.startsWith('110-') && !rawKey.startsWith('109-')) {
+      const subId = rawKey.split('-')[0];
+      const matchChapter = all.filter(q => q.chapterId === rawKey);
+      if (matchChapter.length > 0) {
+        filtered = matchChapter;
+      } else {
+        // Fallback to subject's own questions
+        filtered = all.filter(q => q.subjectId === subId);
+      }
+    }
+    // 5. Single question (session-113-BAR-CONST-01, etc.)
+    else if (all.some(q => q.id === rawKey)) {
+      filtered = all.filter(q => q.id === rawKey);
+    }
+    // 6. Wrong questions review session
+    else if (rawKey === 'wrong') {
+      const stored = getStoredAnswers();
+      const wrongIds = stored.filter(a => !a.isCorrect).map(a => a.questionId);
+      filtered = all.filter(q => wrongIds.includes(q.id));
+    }
+    // 7. Traps review session
+    else if (rawKey === 'traps') {
+      const stored = getStoredAnswers();
+      const trapIds = stored.filter(a => a.isMarkedTrap).map(a => a.questionId);
+      filtered = all.filter(q => trapIds.includes(q.id));
+    }
+    // 8. General / Quick / Daily
+    else if (rawKey === 'daily-15') {
+      filtered = all.slice(0, 15);
+    } else if (rawKey === 'quick') {
+      filtered = all.slice(0, 10);
+    } else {
+      filtered = all;
+    }
+
+    if (filtered.length === 0) {
+      filtered = all;
+    }
+
+    setQuestions(filtered);
 
     // Hydrate existing answers if any
     const stored = getStoredAnswers();
@@ -49,7 +108,7 @@ export function PracticeSessionClient({ sessionId }: { sessionId: string }) {
     });
     setSelectedAnswers(ansMap);
     setMarkedTraps(trapMap);
-  }, []);
+  }, [sessionId]);
 
   // Timer Tick
   useEffect(() => {

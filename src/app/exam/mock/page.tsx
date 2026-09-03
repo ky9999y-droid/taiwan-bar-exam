@@ -233,7 +233,7 @@ export default function MockExamPage() {
               </div>
 
               <Link
-                href="/practice/session-mock"
+                href={`/practice/session-${mock.id}`}
                 className="px-4 py-2 rounded-xl bg-navy-900 dark:bg-gold-500 text-white dark:text-navy-950 font-bold hover:bg-navy-800 dark:hover:bg-gold-400 transition flex items-center gap-1.5 shadow-sm"
               >
                 進入 {selectedMockYear} 年考場 <ArrowRight className="w-3.5 h-3.5" />

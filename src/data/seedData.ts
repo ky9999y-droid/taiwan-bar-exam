@@ -1784,470 +1784,1435 @@ export function getChapterTextbook(chapterId: string): ChapterTextbook {
 }
 
 export const SAMPLE_QUESTIONS: Question[] = [
-  // 113 年最新真題 (最新年度 2024)
   {
-    id: '113-BAR-CONST-02',
-    sourceType: 'OFFICIAL_EXAM',
-    subjectId: 'CONST',
-    chapterId: 'CONST-8',
-    chapterNo: 8,
-    chapterTitle: '憲法訴訟法：法規範憲法審查與裁判審查',
-    prompt: '關於憲法訴訟法所定「裁判憲法審查」及憲法法庭判決效力，下列敘述何者正確？',
-    options: [
-      { label: 'A', text: '人民就其依法定程序用盡審級救濟之確定終局裁判，僅得聲請法規範憲法審查，不得直接就裁判本身宣告違憲聲請審查' },
-      { label: 'B', text: '憲法法庭宣告確定終局裁判違憲者，應廢棄該裁判，並發回管轄法院審理' },
-      { label: 'C', text: '確定終局裁判所適用之法規經憲法法庭宣告違憲者，該裁判當然直接失去法律效力，受判決人無須再提起再審' },
-      { label: 'D', text: '憲法法庭判決宣告裁判違憲之效力，原則上一律溯及既往自該裁判確定之日起無效' }
-    ],
-    correctAnswer: 'B',
-    optionExplanations: {
-      A: {
-        isCorrect: false,
-        reason: '依憲法訴訟法第 59 條第 1 項規定，人民就其依法定程序用盡審級救濟之確定終局裁判，認有牴觸憲法者，得聲請憲法法庭為宣告違憲之判決。此即裁判憲法審查新制。選項稱不得直接就裁判聲請係屬舊制大法官審理法時期規範。',
-        trapType: '混淆憲法訴訟法新制與大法官審理法舊制'
-      },
-      B: {
-        isCorrect: true,
-        reason: '依憲法訴訟法第 62 條第 1 項規定，憲法法庭認人民之聲請有理由者，應於判決主文宣告該確定終局裁判違憲，並廢棄該裁判，發回管轄法院。完全符合法條明文。',
-        trapType: '正解無陷阱'
-      },
-      C: {
-        isCorrect: false,
-        reason: '依憲法訴訟法第 64 條第 1 項，法規範宣告違憲時，聲請人得依各該訴訟法規定提起再審之訴或聲請非常上訴，並非確定終局裁判當然直接失效。',
-        trapType: '誤認判決當然自動失其效力而免除再審程序'
-      },
-      D: {
-        isCorrect: false,
-        reason: '裁判憲法審查係依憲法訴訟法廢棄並發回管轄法院重審，並非抽象溯及當然無效。',
-        trapType: '混淆發回管轄法院與當然自始無效之法律效果'
-      }
-    },
-    tags: ['#憲法訴訟法', '#裁判憲法審查', '#廢棄發回', '#113最新考點'],
-    difficulty: 'HARD',
-    relatedLaws: [
-      { lawName: '憲法訴訟法', articleNo: '第 59 條' },
-      { lawName: '憲法訴訟法', articleNo: '第 62 條' },
-      { lawName: '憲法訴訟法', articleNo: '第 64 條' }
-    ],
-    relatedCases: [
+    "id": "113-BAR-CONST-01",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "CONST",
+    "chapterId": "CONST-8",
+    "chapterNo": 8,
+    "chapterTitle": "憲法訴訟法：法規範憲法審查與裁判審查",
+    "prompt": "關於憲法訴訟法所定「裁判憲法審查」及憲法法庭判決效力，下列敘述何者正確？",
+    "options": [
       {
-        court: '憲法法庭判決',
-        caseNo: '111 年憲判字第 8 號判決',
-        summary: '憲法法庭宣告確定終局裁判牴觸憲法並予廢棄發回管轄法院。',
-        isVerified: true
-      }
-    ],
-    examYear: '113',
-    examSession: '專技高考律師第一試',
-    questionNo: 2,
-    verifiedDate: '2024-08-10',
-    sourceCitation: '考選部 113 年專門職業及技術人員高等考試律師第一試 綜合法學(一)第2題',
-    officialCorrectRate: 58.6
-  },
-  {
-    id: '113-BAR-ADMIN-20',
-    sourceType: 'OFFICIAL_EXAM',
-    subjectId: 'ADMIN',
-    chapterId: 'ADMIN-3',
-    chapterNo: 3,
-    chapterTitle: '行政處分之成立、瑕疵與廢止撤銷',
-    prompt: '關於行政程序法第 123 條合法授益行政處分之「廢止」，下列敘述何者正確？',
-    options: [
-      { label: 'A', text: '合法授益處分之廢止，行政機關基於行政主導原則得隨時依裁量為之，不受任何法定事由之限制' },
-      { label: 'B', text: '附負擔之行政處分，受益人未履行該負擔者，原處分機關得廢止該處分，且該處分得溯及既往失其效力' },
-      { label: 'C', text: '因行政處分所依據之法規事後發生變更而廢止處分者，原處分機關一律無須補償受益人之財產損失' },
-      { label: 'D', text: '合法授益處分廢止權之行使，不受任何除斥期間之限制' }
-    ],
-    correctAnswer: 'B',
-    optionExplanations: {
-      A: {
-        isCorrect: false,
-        reason: '依行政程序法第 123 條本文，合法授益處分除法規另有規定外，非有法定五款情形之一者，不得廢止。具有嚴格法定事由限制。',
-        trapType: '誤以為合法處分機關可自由任意廢止'
-      },
-      B: {
-        isCorrect: true,
-        reason: '依行政程序法第 123 條第 3 款及第 125 條但書規定，附負擔之行政處分受益人未履行負擔而廢止者，得溯及既往失其效力。為廢止向將來失效之法定唯一溯及例外。',
-        trapType: '正解無陷阱'
-      },
-      C: {
-        isCorrect: false,
-        reason: '依行政程序法第 126 條第 1 項規定，原處分機關依第 123 條第 4 款（法規或事實事後變更）廢止處分者，對受益人遭受之財產損失，應給予合理補償。',
-        trapType: '漏看第126條明定第4款法規變更廢止應予信賴補償'
-      },
-      D: {
-        isCorrect: false,
-        reason: '依行政程序法第 124 條規定，廢止應自廢止原因發生後 2 年內為之，受 2 年除斥期間限制。',
-        trapType: '忽略第124條法定2年除斥期間'
-      }
-    },
-    tags: ['#行政法', '#合法處分廢止', '#未履行負擔溯及失效', '#113最新考點', '#行政程序法§123-§126'],
-    difficulty: 'MEDIUM',
-    relatedLaws: [
-      { lawName: '行政程序法', articleNo: '第 123 條' },
-      { lawName: '行政程序法', articleNo: '第 124 條' },
-      { lawName: '行政程序法', articleNo: '第 125 條' },
-      { lawName: '行政程序法', articleNo: '第 126 條' }
-    ],
-    relatedCases: [],
-    examYear: '113',
-    examSession: '專技高考律師第一試',
-    questionNo: 20,
-    verifiedDate: '2024-08-10',
-    sourceCitation: '考選部 113 年專門職業及技術人員高等考試律師第一試 綜合法學(一)第20題',
-    officialCorrectRate: 64.2
-  },
-
-  // 112 年真題
-  {
-    id: '112-BAR-ADMIN-18',
-    sourceType: 'OFFICIAL_EXAM',
-    subjectId: 'ADMIN',
-    chapterId: 'ADMIN-3',
-    chapterNo: 3,
-    chapterTitle: '行政處分之成立、瑕疵與廢止撤銷',
-    prompt: '關於行政程序法上「違法授益行政處分之撤銷」，下列敘述何者正確？',
-    options: [
-      { label: 'A', text: '原處分機關行使撤銷權，不受任何除斥期間之限制，以徹底落實依法行政原則' },
-      { label: 'B', text: '受益人縱有對重要事項提供不正確資料致使行政機關依該資料作成處分之情形，其信賴利益仍應受絕對保護' },
-      { label: 'C', text: '原處分機關若撤銷違法授益行政處分，對於受益人因信賴該處分所受之財產損失，應給予合理之補償，但受益人有行政程序法第 119 條所列信賴不值得保護之情形者，不在此限' },
-      { label: 'D', text: '違法授益行政處分經撤銷後，一律向將來失效，絕對不得溯及既往失其效力' }
-    ],
-    correctAnswer: 'C',
-    optionExplanations: {
-      A: {
-        isCorrect: false,
-        reason: '依行政程序法第 124 條規定，違法行政處分之撤銷權，應自原處分機關或其上級機關知有撤銷原因起 2 年內為之。本選項宣稱不受任何除斥期間限制，違反法條明文。',
-        trapType: '忽略第124條法定2年除斥期間'
-      },
-      B: {
-        isCorrect: false,
-        reason: '依行政程序法第 119 條第 2 款規定，對重要事項提供不正確資料或為不完全陳述，致使行政機關依該資料或陳述而作成行政處分者，其「信賴不值得保護」，不得主張信賴利益受保障。',
-        trapType: '將惡意不法信賴誤當受保護之信賴'
-      },
-      C: {
-        isCorrect: true,
-        reason: '行政程序法第 120 條第 1 項明定：「授予利益之違法行政處分經撤銷後，如受益人無前條所列信賴不值得保護之情形，其因信賴該處分致遭受財產上之損失者，為撤銷之機關應給予合理之補償。」本選項文義完全契合法律規定。',
-        trapType: '正解無陷阱'
-      },
-      D: {
-        isCorrect: false,
-        reason: '依行政程序法第 118 條前段規定，違法行政處分經撤銷後，原則上「溯及既往失其效力」。本選項宣稱一律向將來失效，顛倒了原則與例外。',
-        trapType: '將撤銷原則溯及既往失效顛倒為向將來失效'
-      }
-    },
-    tags: ['#行政處分', '#信賴保護', '#除斥期間', '#高頻考點', '#行政程序法§117-§124'],
-    difficulty: 'MEDIUM',
-    relatedLaws: [
-      { lawName: '行政程序法', articleNo: '第 117 條' },
-      { lawName: '行政程序法', articleNo: '第 118 條' },
-      { lawName: '行政程序法', articleNo: '第 119 條' },
-      { lawName: '行政程序法', articleNo: '第 120 條' },
-      { lawName: '行政程序法', articleNo: '第 124 條' }
-    ],
-    relatedCases: [
-      {
-        court: '最高行政法院',
-        caseNo: '102年11月份第1次庭長法官聯席會議',
-        summary: '知有撤銷原因係指確實知曉，自確實知曉起算2年除斥期間。',
-        isVerified: true
-      }
-    ],
-    examYear: '112',
-    examSession: '專技高考律師第一試',
-    questionNo: 18,
-    verifiedDate: '2024-05-01',
-    sourceCitation: '考選部 112 年專門職業及技術人員高等考試律師第一試試題 綜合法學(一)第18題',
-    officialCorrectRate: 68.4
-  },
-  {
-    id: '112-BAR-CRIMPROC-32',
-    sourceType: 'OFFICIAL_EXAM',
-    subjectId: 'CRIM_PROC',
-    chapterId: 'CRIM_PROC-7',
-    chapterNo: 7,
-    chapterTitle: '傳聞法則與傳聞例外體系',
-    prompt: '關於刑事訴訟法上「傳聞法則及其例外」，下列敘述何者正確？',
-    options: [
-      { label: 'A', text: '被告以外之人於審判外向司法警察所為之陳述，只要與審判中之陳述相符，即可依刑事訴訟法第 159 條之 2 例外取得證據能力' },
-      { label: 'B', text: '共同被告在偵查中以共同被告身分向檢察官所為不利於其他被告之陳述，縱檢察官未命其以證人身分具結，該陳述仍得依第 159 條之 1 第 2 項作為認定其他被告有罪之證據' },
-      { label: 'C', text: '被告以外之人於審判外之陳述，雖不符傳聞例外之規定，但當事人知有不得為證據之情形而未於言詞辯論終結前聲明異議者，視為已有同意，法院於審酌作成時之情況認適當者，得為證據' },
-      { label: 'D', text: '只要當事人雙方明示同意將審判外傳聞證據作為證據，法院即受拘束，必須採為判決之基礎，不得依職權審酌是否適當' }
-    ],
-    correctAnswer: 'C',
-    optionExplanations: {
-      A: {
-        isCorrect: false,
-        reason: '刑事訴訟法第 159 條之 2 規定，必須警詢陳述「與審判中不符」，且具有「較可信之特別情況」及「為證明犯罪事實存否所必要」時，方例外具有證據能力。若陳述完全相符，並無例外採用傳聞證據之必要。',
-        trapType: '漏看第159條之2「與審判中不符」之核心要件'
-      },
-      B: {
-        isCorrect: false,
-        reason: '依司法院釋字第 582 號解釋及刑事訴訟法第 158 條之 3 規定，共同被告對其他被告而言實質上為證人，依法應具結。未依法命其具結之陳述，不得作為不利於其他被告之證據，不能逕依第 159 條之 1 第 2 項採納。',
-        trapType: '忽略第158條之3具結要件與釋字第582號意旨'
-      },
-      C: {
-        isCorrect: true,
-        reason: '刑事訴訟法第 159 條之 5 第 2 項規定，知有不得為證據之情形而未於言詞辯論終結前聲明異議者，視為已有同條第 1 項之同意；且第 1 項明定法院審酌作成時之情況認為適當者，得為證據。完全符合法條。',
-        trapType: '正解無陷阱'
-      },
-      D: {
-        isCorrect: false,
-        reason: '刑事訴訟法第 159 條之 5 第 1 項明定「法院審酌該言詞陳述或書面陳述作成時之情況，認為適當者，亦得為證據」。縱使當事人同意，法院仍有適當性審查權，並不受當事人完全拘束。',
-        trapType: '誤以為當事人處分權可排除法院自由心證適當性審查'
-      }
-    },
-    tags: ['#刑事訴訟法', '#傳聞法則', '#擬制同意', '#具結義務', '#高頻考點', '#刑訴§159-§159-5'],
-    difficulty: 'HARD',
-    relatedLaws: [
-      { lawName: '刑事訴訟法', articleNo: '第 158 條之 3' },
-      { lawName: '刑事訴訟法', articleNo: '第 159 條之 1' },
-      { lawName: '刑事訴訟法', articleNo: '第 159 條之 2' },
-      { lawName: '刑事訴訟法', articleNo: '第 159 條之 5' }
-    ],
-    relatedCases: [
-      {
-        court: '司法院大法官釋字',
-        caseNo: '釋字第 582 號解釋',
-        summary: '共同被告對他人案件為證人，審判外陳述須具結與詰問。',
-        isVerified: true
+        "label": "A",
+        "text": "人民就其依法定程序用盡審級救濟之確定終局裁判，僅得聲請法規範憲法審查，不得直接就裁判本身宣告違憲聲請審查"
       },
       {
-        court: '憲法法庭判決',
-        caseNo: '111年憲判字第8號判決',
-        summary: '保障反對詰問權為公平審判核心，傳聞例外不得作為唯一或主要有罪證據。',
-        isVerified: true
-      }
-    ],
-    examYear: '112',
-    examSession: '專技高考律師第一試',
-    questionNo: 32,
-    verifiedDate: '2024-05-01',
-    sourceCitation: '考選部 112 年專門職業及技術人員高等考試律師第一試試題 綜合法學(一)第32題',
-    officialCorrectRate: 51.2
-  },
-
-  // 111 年真題
-  {
-    id: '111-BAR-CIVIL-09',
-    sourceType: 'OFFICIAL_EXAM',
-    subjectId: 'CIVIL',
-    chapterId: 'CIVIL-3',
-    chapterNo: 3,
-    chapterTitle: '代理（無權代理與表見代理）',
-    prompt: '關於民法上「表見代理」之規定，下列敘述何者正確？',
-    options: [
-      { label: 'A', text: '本人由自己之行為表示以代理權授與他人者，縱第三人明知他人無代理權，本人仍應對第三人負授權人之責任' },
-      { label: 'B', text: '本人知他人表示為其代理人而不為反對之表示者，對於善意無過失之相對人，應負授權人之責任' },
-      { label: 'C', text: '表見代理之法律效果為代理行為直接無效，相對人僅得請求損害賠償' },
-      { label: 'D', text: '本人將印鑑章交付他人保管，他人擅自以本人名義簽訂保證契約，一律當然構成表見代理' }
-    ],
-    correctAnswer: 'B',
-    optionExplanations: {
-      A: {
-        isCorrect: false,
-        reason: '依民法第 169 條但書規定，第三人明知其無代理權或可得而知者，本人不負授權人責任。保護對象僅限於善意無過失之第三人。',
-        trapType: '漏看民法第169條但書善意要件'
+        "label": "B",
+        "text": "憲法法庭宣告確定終局裁判違憲者，應廢棄該裁判，並發回管轄法院審理"
       },
-      B: {
-        isCorrect: true,
-        reason: '民法第 169 條本文規定：「由自己之行為表示以代理權授與他人，或知他人表示為其代理人而不為反對之表示者，對於第三人應負授權人之責任。」符合容忍授權型表見代理要件。',
-        trapType: '正解無陷阱'
-      },
-      C: {
-        isCorrect: false,
-        reason: '表見代理之法律效果為「本人負授權人責任」，亦即使該法律行為對本人直接發生效力，而非直接無效。',
-        trapType: '混淆無權代理與表見代理之法律效果'
-      },
-      D: {
-        isCorrect: false,
-        reason: '依最高法院 70 年台上字第 657 號判例意旨，單純將印鑑章交付他人保管，非當然成立表見代理，仍須視本人是否由自己之行為表示以代理權授與他人等具體客觀情事而定。',
-        trapType: '忽略最高法院關於單純交付印鑑章不構成表見代理之重要實務見解'
-      }
-    },
-    tags: ['#民法總則', '#表見代理', '#民法§169', '#印鑑章實務', '#高頻考點'],
-    difficulty: 'MEDIUM',
-    relatedLaws: [
-      { lawName: '民法', articleNo: '第 169 條' },
-      { lawName: '民法', articleNo: '第 170 條' }
-    ],
-    relatedCases: [
       {
-        court: '最高法院',
-        caseNo: '70 年台上字第 657 號判例',
-        summary: '單純交付印章，不能遽認成立表見代理。',
-        isVerified: true
-      }
-    ],
-    examYear: '111',
-    examSession: '專技高考律師第一試',
-    questionNo: 9,
-    verifiedDate: '2024-05-01',
-    sourceCitation: '考選部 111 年專門職業及技術人員高等考試律師第一試試題 綜合法學(二)第9題',
-    officialCorrectRate: 63.8
-  },
-  {
-    id: '111-BAR-CORP-24',
-    sourceType: 'OFFICIAL_EXAM',
-    subjectId: 'CORP',
-    chapterId: 'CORP-3',
-    chapterNo: 3,
-    chapterTitle: '董事會權限、董事忠實義務與注意義務',
-    prompt: '關於公司法第 23 條所定「公司負責人之忠實義務與善良管理人注意義務」，下列敘述何者正確？',
-    options: [
-      { label: 'A', text: '公司負責人若違反忠實義務為自己或他人為該行為時，股東會得決議將該行為之所得視為公司之所得，此項請求權自所得產生後 5 年間不行使而消滅' },
-      { label: 'B', text: '公司負責人違反法令致他人受損害時，僅由負責人個人負擔賠償責任，公司完全不負連帶責任' },
-      { label: 'C', text: '公司負責人應忠實執行業務並盡善良管理人之注意義務，如有違反致公司受有損害，負損害賠償責任；其為自己或他人為該行為致公司受損害者，股東會得以決議，將該行為之所得視為公司之所得，但自所得產生後逾 1 年不行使而消滅' },
-      { label: 'D', text: '行使公司負責人歸入權之決議，必須由董事會依特別決議行使之，股東會無權決議' }
-    ],
-    correctAnswer: 'C',
-    optionExplanations: {
-      A: {
-        isCorrect: false,
-        reason: '依公司法第 23 條第 3 項但書規定，所得視為公司所得之請求權（歸入權），自所得產生後「逾 1 年」不行使而消滅，並非 5 年。',
-        trapType: '篡改除斥期間年限 (1年誤記為5年)'
+        "label": "C",
+        "text": "確定終局裁判所適用之法規經憲法法庭宣告違憲者，該裁判當然直接失去法律效力，受判決人無須再提起再審"
       },
-      B: {
-        isCorrect: false,
-        reason: '依公司法第 23 條第 2 項規定，公司負責人對於公司業務之執行，如有違反法令致他人受有損害時，對他人應與公司負「連帶賠償之責」。公司應負連帶責任。',
-        trapType: '排除公司法定連帶賠償責任'
-      },
-      C: {
-        isCorrect: true,
-        reason: '完全符合公司法第 23 條第 1 項及第 3 項本文與但書之完整文義規範。',
-        trapType: '正解無陷阱'
-      },
-      D: {
-        isCorrect: false,
-        reason: '依公司法第 23 條第 3 項，行使歸入權係由「股東會」以決議行之，而非董事會。',
-        trapType: '機關決議權限錯置（股東會誤寫為董事會）'
-      }
-    },
-    tags: ['#公司法', '#公司負責人', '#忠實義務', '#歸入權', '#公司法§23', '#高頻考點'],
-    difficulty: 'MEDIUM',
-    relatedLaws: [
-      { lawName: '公司法', articleNo: '第 23 條' },
-      { lawName: '公司法', articleNo: '第 193 條' }
-    ],
-    relatedCases: [],
-    examYear: '111',
-    examSession: '專技高考律師第一試',
-    questionNo: 24,
-    verifiedDate: '2024-05-01',
-    sourceCitation: '考選部 111 年專門職業及技術人員高等考試律師第一試試題 綜合法學(二)第24題',
-    officialCorrectRate: 72.1
-  },
-
-  // 110 年真題
-  {
-    id: '110-BAR-SEC-62',
-    sourceType: 'OFFICIAL_EXAM',
-    subjectId: 'SEC_REG',
-    chapterId: 'CORP-3',
-    chapterNo: 3,
-    chapterTitle: '證券交易法：內線交易與重大消息明確時點',
-    prompt: '依證券交易法第 157 條之 1 關於「禁止內線交易」之規定，下列敘述何者正確？',
-    options: [
-      { label: 'A', text: '內部人獲悉發行股票公司有重大影響其股票價格之消息時，只要在消息明確後即可立刻自行買賣該公司股票' },
-      { label: 'B', text: '重大影響其股票價格之消息，在該消息明確後，未公開前或公開後 18 小時內，不得對該公司之上市或在證券商營業處所買賣之股票或其他具有股權性質之有價證券買入或賣出' },
-      { label: 'C', text: '喪失內部人身分未滿 1 年者，不受證券交易法內線交易禁止規定之規範' },
-      { label: 'D', text: '基於職業或控制關係獲悉消息之人，將消息告知他人，若自己未實際買賣股票，一律完全不負任何法律責任' }
-    ],
-    correctAnswer: 'B',
-    optionExplanations: {
-      A: {
-        isCorrect: false,
-        reason: '依證券交易法第 157 條之 1 第 1 項本文，在消息明確後，未公開前或「公開後 18 小時內」，不得買入或賣出該公司股票。',
-        trapType: '忽略重大消息公開後18小時之沉澱期限制'
-      },
-      B: {
-        isCorrect: true,
-        reason: '證券交易法第 157 條之 1 第 1 項明定重大消息明確後，未公開前或「公開後 18 小時內」為禁止交易之核心期間。文義完全正確。',
-        trapType: '正解無陷阱'
-      },
-      C: {
-        isCorrect: false,
-        reason: '依證券交易法第 157 條之 1 第 1 項第 4 款，喪失內部人身分「未滿 6 個月者」，仍屬受規範之內部人主體。',
-        trapType: '篡改法定年限（6個月誤寫為1年）'
-      },
-      D: {
-        isCorrect: false,
-        reason: '依證券交易法第 157 條之 1 第 6 項，提供消息之人若與受領消息買賣者有共同謀意，可能構成共同正犯或民事連帶賠償責任。',
-        trapType: '免除消息傳遞人之共犯與民事連帶賠償責任'
-      }
-    },
-    tags: ['#證券交易法', '#內線交易', '#18小時沉澱期', '#重大消息', '#證交法§157-1'],
-    difficulty: 'HARD',
-    relatedLaws: [
-      { lawName: '證券交易法', articleNo: '第 157 條之 1' }
-    ],
-    relatedCases: [],
-    examYear: '110',
-    examSession: '專技高考律師第一試',
-    questionNo: 62,
-    verifiedDate: '2024-05-01',
-    sourceCitation: '考選部 110 年專門職業及技術人員高等考試律師第一試 綜合法學(二)第62題',
-    officialCorrectRate: 59.4
-  },
-
-  // 109 年真題
-  {
-    id: '109-BAR-CRIM-19',
-    sourceType: 'OFFICIAL_EXAM',
-    subjectId: 'CRIM',
-    chapterId: 'CRIM-5',
-    chapterNo: 5,
-    chapterTitle: '正犯與共犯（共同正犯之犯意聯絡與行為分擔）',
-    prompt: '甲、乙、丙三人共同基於意圖為自己不法所有之犯意聯絡，推由甲、乙二人侵入他人住宅行竊，丙則在屋外把風接應。下列敘述何者正確？',
-    options: [
-      { label: 'A', text: '丙僅在屋外把風，未實行刑法加重竊盜罪構成要件行為，僅能論以竊盜罪之幫助犯' },
-      { label: 'B', text: '丙與甲、乙有共同之犯意聯絡，且在場把風分擔重要職責，依刑法第 28 條規定，丙仍成立加重竊盜罪之共同正犯' },
-      { label: 'C', text: '若甲於屋內擅自臨時起意放火燒燬該住宅，丙亦當然成立放火罪之共同正犯' },
-      { label: 'D', text: '共同正犯之成立，以所有參與人均必須進入現場實施構成要件行為為必要' }
-    ],
-    correctAnswer: 'B',
-    optionExplanations: {
-      A: {
-        isCorrect: false,
-        reason: '司法院釋字第 109 號解釋及最高法院判例意旨：以自己共同犯罪之意思，在犯罪現場外把風以助成犯罪實現者，為共同正犯，非單純幫助犯。',
-        trapType: '將把風之共同正犯誤認為幫助犯'
-      },
-      B: {
-        isCorrect: true,
-        reason: '依刑法第 28 條及大法官釋字第 109 號解釋，以自己犯罪之意思參與犯意聯絡，且為把風之行為分擔者，均屬共同正犯。',
-        trapType: '正解無陷阱'
-      },
-      C: {
-        isCorrect: false,
-        reason: '甲臨時起意放火屬於逾越原共同竊盜犯意聯絡範圍之「共犯過剩」，丙對放火罪無犯意聯絡與行為分擔，不負放火罪之共同正犯責任。',
-        trapType: '忽略共犯過剩不歸責於其他共犯之原則'
-      },
-      D: {
-        isCorrect: false,
-        reason: '共同正犯並不以全體均實行構成要件全部行為為必要，一部行為分擔或共謀共同正犯皆可成立。',
-        trapType: '限制共同正犯必須全員實行全部構成要件行為'
-      }
-    },
-    tags: ['#刑法總則', '#共同正犯', '#把風', '#共犯過剩', '#釋字第109號', '#刑法§28'],
-    difficulty: 'MEDIUM',
-    relatedLaws: [
-      { lawName: '刑法', articleNo: '第 28 條' },
-      { lawName: '刑法', articleNo: '第 321 條' }
-    ],
-    relatedCases: [
       {
-        court: '司法院大法官釋字',
-        caseNo: '釋字第 109 號解釋',
-        summary: '以自己犯罪意思參與犯意聯絡或實施要件外行為，均為正犯。',
-        isVerified: true
+        "label": "D",
+        "text": "憲法法庭判決宣告裁判違憲之效力，原則上一律溯及既往自該裁判確定之日起無效"
       }
     ],
-    examYear: '109',
-    examSession: '專技高考律師第一試',
-    questionNo: 19,
-    verifiedDate: '2024-05-01',
-    sourceCitation: '考選部 109 年專門職業及技術人員高等考試律師第一試 綜合法學(一)第19題',
-    officialCorrectRate: 76.5
+    "correctAnswer": "B",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "依憲法訴訟法第 59 條第 1 項規定，人民就其依法定程序用盡審級救濟之確定終局裁判，認有牴觸憲法者，得聲請憲法法庭為宣告違憲之判決。此即裁判憲法審查新制。",
+        "trapType": "混淆憲法訴訟法新制與大法官審理法舊制"
+      },
+      "B": {
+        "isCorrect": true,
+        "reason": "依憲法訴訟法第 62 條第 1 項規定，憲法法庭認人民之聲請有理由者，應於判決主文宣告該確定終局裁判違憲，並廢棄該裁判，發回管轄法院。完全符合法條明文。",
+        "trapType": "正解無陷阱"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "依憲法訴訟法第 64 條第 1 項，法規範宣告違憲時，聲請人得依各該訴訟法規定提起再審之訴或聲請非常上訴，並非確定終局裁判當然直接失效。",
+        "trapType": "誤認判決當然自動失其效力而免除再審程序"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "裁判憲法審查係依憲法訴訟法廢棄並發回管轄法院重審，並非抽象溯及當然無效。",
+        "trapType": "混淆發回管轄法院與當然自始無效之法律效果"
+      }
+    },
+    "tags": [
+      "#憲法訴訟法",
+      "#裁判憲法審查",
+      "#廢棄發回",
+      "#113最新考點"
+    ],
+    "difficulty": "HARD",
+    "relatedLaws": [
+      {
+        "lawName": "憲法訴訟法",
+        "articleNo": "第 59 條"
+      },
+      {
+        "lawName": "憲法訴訟法",
+        "articleNo": "第 62 條"
+      }
+    ],
+    "relatedCases": [
+      {
+        "court": "憲法法庭判決",
+        "caseNo": "111年憲判字第8號",
+        "summary": "宣告確定終局裁判違憲並廢棄發回。",
+        "isVerified": true
+      }
+    ],
+    "examYear": "113",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 1,
+    "verifiedDate": "2024-08-10",
+    "sourceCitation": "考選部 113 年專技高考律師第一試 綜合法學(一)第1題",
+    "officialCorrectRate": 58.6
+  },
+  {
+    "id": "112-BAR-CONST-02",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "CONST",
+    "chapterId": "CONST-2",
+    "chapterNo": 2,
+    "chapterTitle": "平等權與各類差別待遇審查基準",
+    "prompt": "依司法院大法官相關解釋與憲法法庭裁判，關於憲法第 7 條「平等原則」與差別待遇審查基準，下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "以性別為分類標準所為之差別待遇，憲法法庭一律採取最寬鬆之合理審查基準"
+      },
+      {
+        "label": "B",
+        "text": "平等原則之意涵為絕對齊頭式平等，禁止任何形式之實質合理差別待遇"
+      },
+      {
+        "label": "C",
+        "text": "如差別待遇所涉及者為非憲法列舉之重要基本權利（如工作權），原則上應適用中度審查基準（實質關聯性）"
+      },
+      {
+        "label": "D",
+        "text": "基於可變性特徵所為之分類，審查密度原則上較基於不可變特徵（如性別、種族）之分類更為嚴格"
+      }
+    ],
+    "correctAnswer": "C",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "以性別等難以改變之個人特徵為分類標準時，大法官原則上採「中度或嚴格審查基準」（釋字第365號、第748號），非合理審查基準。",
+        "trapType": "將性別差別待遇審查基準誤降為寬鬆審查"
+      },
+      "B": {
+        "isCorrect": false,
+        "reason": "憲法第7條平等權保障係指「實質平等」與「合目的性之差別待遇」，禁止恣意，非絕對齊頭平等。",
+        "trapType": "誤將實質平等當作齊頭平等"
+      },
+      "C": {
+        "isCorrect": true,
+        "reason": "依司法院釋字第584號、第728號等意旨，涉及重要基本權利限制之差別待遇，應審查立法目的與手段間是否具有實質關聯性。",
+        "trapType": "正解無陷阱"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "基於不可變特徵（種族、性別、出生）之分類，審查密度高於可變特徵（職業、學歷）。",
+        "trapType": "顛倒可變與不可變特徵之審查密度"
+      }
+    },
+    "tags": [
+      "#憲法",
+      "#平等原則",
+      "#審查基準",
+      "#實質關聯性"
+    ],
+    "difficulty": "MEDIUM",
+    "relatedLaws": [
+      {
+        "lawName": "中華民國憲法",
+        "articleNo": "第 7 條"
+      }
+    ],
+    "relatedCases": [
+      {
+        "court": "司法院大法官釋字",
+        "caseNo": "釋字第 748 號解釋",
+        "summary": "婚姻自由平等保護與同性婚姻。",
+        "isVerified": true
+      }
+    ],
+    "examYear": "112",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 4,
+    "verifiedDate": "2024-05-01",
+    "sourceCitation": "考選部 112 年專技高考律師第一試 綜合法學(一)第4題",
+    "officialCorrectRate": 67.2
+  },
+  {
+    "id": "113-BAR-ADMIN-01",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "ADMIN",
+    "chapterId": "ADMIN-3",
+    "chapterNo": 3,
+    "chapterTitle": "行政處分之成立、瑕疵與廢止撤銷",
+    "prompt": "關於行政程序法第 123 條合法授益行政處分之「廢止」，下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "合法授益處分之廢止，行政機關基於行政主導原則得隨時依裁量為之，不受任何法定事由之限制"
+      },
+      {
+        "label": "B",
+        "text": "附負擔之行政處分，受益人未履行該負擔者，原處分機關得廢止該處分，且該處分得溯及既往失其效力"
+      },
+      {
+        "label": "C",
+        "text": "因行政處分所依據之法規事後發生變更而廢止處分者，原處分機關一律無須補償受益人之財產損失"
+      },
+      {
+        "label": "D",
+        "text": "合法授益處分廢止權之行使，不受任何除斥期間之限制"
+      }
+    ],
+    "correctAnswer": "B",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "依行政程序法第 123 條本文，合法授益處分非有法定五款情形之一者不得廢止。",
+        "trapType": "誤以為合法處分機關可自由任意廢止"
+      },
+      "B": {
+        "isCorrect": true,
+        "reason": "依行政程序法第 123 條第 3 款及第 125 條但書規定，附負擔之處分受益人未履行負擔而廢止者，得溯及既往失效。為廢止唯一溯及例外。",
+        "trapType": "正解無陷阱"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "依行政程序法第 126 條第 1 項，依第 123 條第 4 款（法規變更）廢止者應給予合理財產補償。",
+        "trapType": "漏看第126條明定信賴補償"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "依行政程序法第 124 條，應自廢止原因發生後 2 年內為之。",
+        "trapType": "忽略第124條法定2年除斥期間"
+      }
+    },
+    "tags": [
+      "#行政法",
+      "#合法處分廢止",
+      "#未履行負擔溯及失效",
+      "#113最新考點"
+    ],
+    "difficulty": "MEDIUM",
+    "relatedLaws": [
+      {
+        "lawName": "行政程序法",
+        "articleNo": "第 123 條"
+      },
+      {
+        "lawName": "行政程序法",
+        "articleNo": "第 125 條"
+      }
+    ],
+    "relatedCases": [],
+    "examYear": "113",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 20,
+    "verifiedDate": "2024-08-10",
+    "sourceCitation": "考選部 113 年專技高考律師第一試 綜合法學(一)第20題",
+    "officialCorrectRate": 64.2
+  },
+  {
+    "id": "112-BAR-ADMIN-02",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "ADMIN",
+    "chapterId": "ADMIN-3",
+    "chapterNo": 3,
+    "chapterTitle": "行政處分之成立、瑕疵與廢止撤銷",
+    "prompt": "關於行政程序法上「違法授益行政處分之撤銷」，下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "原處分機關行使撤銷權，不受任何除斥期間之限制，以徹底落實依法行政原則"
+      },
+      {
+        "label": "B",
+        "text": "受益人縱有對重要事項提供不正確資料致使行政機關作成處分，其信賴利益仍受絕對保護"
+      },
+      {
+        "label": "C",
+        "text": "原處分機關撤銷違法授益處分，受益人無行政程序法第 119 條信賴不值得保護情事且遭受財產損失者，應給予合理補償"
+      },
+      {
+        "label": "D",
+        "text": "違法授益行政處分經撤銷後，一律向將來失效，絕對不得溯及既往失其效力"
+      }
+    ],
+    "correctAnswer": "C",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "依行政程序法第 124 條，撤銷權應自知有撤銷原因起 2 年內為之。",
+        "trapType": "忽略第124條除斥期間"
+      },
+      "B": {
+        "isCorrect": false,
+        "reason": "依行政程序法第 119 條第 2 款，提供不正確資料者信賴不值得保護。",
+        "trapType": "將惡意信賴誤當受保護"
+      },
+      "C": {
+        "isCorrect": true,
+        "reason": "行政程序法第 120 條第 1 項明定受益人無第119條事由致受損失者應給予合理補償。",
+        "trapType": "正解無陷阱"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "依行政程序法第 118 條前段，違法處分撤銷原則上溯及既往失其效力。",
+        "trapType": "將撤銷原則溯及失效顛倒為向將來失效"
+      }
+    },
+    "tags": [
+      "#行政處分",
+      "#信賴保護",
+      "#除斥期間",
+      "#行政程序法§117-§120"
+    ],
+    "difficulty": "MEDIUM",
+    "relatedLaws": [
+      {
+        "lawName": "行政程序法",
+        "articleNo": "第 117 條"
+      },
+      {
+        "lawName": "行政程序法",
+        "articleNo": "第 120 條"
+      }
+    ],
+    "relatedCases": [],
+    "examYear": "112",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 18,
+    "verifiedDate": "2024-05-01",
+    "sourceCitation": "考選部 112 年專技高考律師第一試 綜合法學(一)第18題",
+    "officialCorrectRate": 68.4
+  },
+  {
+    "id": "113-BAR-CRIM-01",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "CRIM",
+    "chapterId": "CRIM-7",
+    "chapterNo": 7,
+    "chapterTitle": "沒收新制（犯罪所得沒收與第三人沒收）",
+    "prompt": "關於刑法第 38 條之 1 犯罪所得「沒收」之規定，下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "犯罪所得之沒收，性質上為刑罰之從刑，必須以行為人具備有罪罪責為絕對前提"
+      },
+      {
+        "label": "B",
+        "text": "第三人無償或以顯不相當之對價取得犯罪所得者，法院得宣告沒收該第三人所取得之財物"
+      },
+      {
+        "label": "C",
+        "text": "犯罪所得之沒收，於全部或一部不能沒收時，僅能命追徵價額，不得追繳"
+      },
+      {
+        "label": "D",
+        "text": "犯罪所得之計算，一律採「淨額原則」，扣除行為人實行犯罪之一切直接與間接成本"
+      }
+    ],
+    "correctAnswer": "B",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "刑法沒收新制確立沒收為「獨立法律效果」（準不當得利），不以行為人有責任能力或成立犯罪論罪科刑為絕對前提（單獨宣告沒收，刑§40 III）。",
+        "trapType": "誤將新制獨立沒收當作附屬從刑"
+      },
+      "B": {
+        "isCorrect": true,
+        "reason": "依刑法第 38 條之 1 第 2 項第 2 款規定，第三人無償或以顯不相當對價取得犯罪所得者，得沒收之。",
+        "trapType": "正解無陷阱"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "依刑法第 38 條之 1 第 6 項，不能沒收或不宜執行沒收時，「追徵其價額」。",
+        "trapType": "法條用詞混淆"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "犯罪所得計算採「總額原則」，行為人實施犯罪之成本不得自所得中扣除（最高法院108年台上字第3587號判決）。",
+        "trapType": "誤將總額原則當成淨額原則"
+      }
+    },
+    "tags": [
+      "#刑法",
+      "#沒收新制",
+      "#第三人沒收",
+      "#總額原則"
+    ],
+    "difficulty": "HARD",
+    "relatedLaws": [
+      {
+        "lawName": "刑法",
+        "articleNo": "第 38 條之 1"
+      }
+    ],
+    "relatedCases": [
+      {
+        "court": "最高法院",
+        "caseNo": "108年度台上字第3587號判決",
+        "summary": "犯罪所得沒收採總額原則。",
+        "isVerified": true
+      }
+    ],
+    "examYear": "113",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 12,
+    "verifiedDate": "2024-08-10",
+    "sourceCitation": "考選部 113 年專技高考律師第一試 綜合法學(一)第12題",
+    "officialCorrectRate": 59.8
+  },
+  {
+    "id": "109-BAR-CRIM-02",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "CRIM",
+    "chapterId": "CRIM-5",
+    "chapterNo": 5,
+    "chapterTitle": "正犯與共犯（共同正犯/教唆犯/幫助犯）",
+    "prompt": "甲、乙、丙三人共同基於意圖為自己不法所有之犯意聯絡，推由甲、乙二人侵入他人住宅行竊，丙則在屋外把風接應。下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "丙僅在屋外把風，未實行刑法加重竊盜罪構成要件行為，僅能論以竊盜罪之幫助犯"
+      },
+      {
+        "label": "B",
+        "text": "丙與甲、乙有共同之犯意聯絡，且在場把風分擔重要職責，依刑法第 28 條規定，丙仍成立加重竊盜罪之共同正犯"
+      },
+      {
+        "label": "C",
+        "text": "若甲於屋內擅自臨時起意放火燒燬該住宅，丙亦當然成立放火罪之共同正犯"
+      },
+      {
+        "label": "D",
+        "text": "共同正犯之成立，以所有參與人均必須進入現場實施構成要件行為為必要"
+      }
+    ],
+    "correctAnswer": "B",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "司法院釋字第 109 號解釋：以自己犯罪之意思在現場把風者為共同正犯，非幫助犯。",
+        "trapType": "將把風共同正犯誤當幫助犯"
+      },
+      "B": {
+        "isCorrect": true,
+        "reason": "刑法第28條與釋字第109號，以自己犯罪之意思參與犯意聯絡並分擔把風者為共同正犯。",
+        "trapType": "正解無陷阱"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "甲臨時起意放火屬共犯過剩，丙無犯意聯絡不負放火共同正犯責任。",
+        "trapType": "忽略共犯過剩原則"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "共同正犯不以全員實行全部構成要件行為為必要。",
+        "trapType": "限制共同正犯要件"
+      }
+    },
+    "tags": [
+      "#刑法總則",
+      "#共同正犯",
+      "#把風",
+      "#釋字第109號"
+    ],
+    "difficulty": "MEDIUM",
+    "relatedLaws": [
+      {
+        "lawName": "刑法",
+        "articleNo": "第 28 條"
+      },
+      {
+        "lawName": "刑法",
+        "articleNo": "第 321 條"
+      }
+    ],
+    "relatedCases": [
+      {
+        "court": "司法院大法官釋字",
+        "caseNo": "釋字第 109 號解釋",
+        "summary": "以自己犯罪意思把風為共同正犯。",
+        "isVerified": true
+      }
+    ],
+    "examYear": "109",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 15,
+    "verifiedDate": "2024-05-01",
+    "sourceCitation": "考選部 109 年專技高考律師第一試 綜合法學(一)第15題",
+    "officialCorrectRate": 76.5
+  },
+  {
+    "id": "112-BAR-CRIMPROC-01",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "CRIM_PROC",
+    "chapterId": "CRIM_PROC-7",
+    "chapterNo": 7,
+    "chapterTitle": "傳聞法則與傳聞例外體系",
+    "prompt": "關於刑事訴訟法上「傳聞法則及其例外」，下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "被告以外之人於審判外向司法警察所為之陳述，只要與審判中之陳述相符，即可依刑事訴訟法第 159 條之 2 例外取得證據能力"
+      },
+      {
+        "label": "B",
+        "text": "共同被告在偵查中以共同被告身分向檢察官所為不利於其他被告之陳述，縱檢察官未命其以證人身分具結，該陳述仍得依第 159 條之 1 第 2 項作為認定其他被告有罪之證據"
+      },
+      {
+        "label": "C",
+        "text": "被告以外之人於審判外之陳述，雖不符傳聞例外之規定，但當事人知有不得為證據之情形而未於言詞辯論終結前聲明異議者，視為已有同意，法院於審酌作成時之情況認適當者，得為證據"
+      },
+      {
+        "label": "D",
+        "text": "只要當事人雙方明示同意將審判外傳聞證據作為證據，法院即受拘束，必須採為判決之基礎，不得依職權審酌是否適當"
+      }
+    ],
+    "correctAnswer": "C",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "刑訴第 159 條之 2 規定，必須警詢陳述「與審判中不符」方例外採納。相符時欠缺傳聞例外之必要性。",
+        "trapType": "漏看第159條之2前後不符要件"
+      },
+      "B": {
+        "isCorrect": false,
+        "reason": "依釋字第 582 號及刑訴第 158 條之 3，共同被告為實質證人，未命具結之供述不得作為不利於其他被告之證據。",
+        "trapType": "忽略第158條之3具結義務"
+      },
+      "C": {
+        "isCorrect": true,
+        "reason": "刑事訴訟法第 159 條之 5 第 2 項規定，知情未於言詞辯論終結前異議視為同意，經法院審酌適當得為證據。",
+        "trapType": "正解無陷阱"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "刑訴第 159 條之 5 第 1 項明定「法院審酌認為適當者」，法院仍保留適當性審查權。",
+        "trapType": "誤認當事人處分權可排除法院審查"
+      }
+    },
+    "tags": [
+      "#刑事訴訟法",
+      "#傳聞法則",
+      "#擬制同意",
+      "#具結義務",
+      "#釋字第582號"
+    ],
+    "difficulty": "HARD",
+    "relatedLaws": [
+      {
+        "lawName": "刑事訴訟法",
+        "articleNo": "第 159 條之 5"
+      }
+    ],
+    "relatedCases": [
+      {
+        "court": "司法院大法官釋字",
+        "caseNo": "釋字第 582 號解釋",
+        "summary": "共同被告審判外供述須具結與詰問。",
+        "isVerified": true
+      }
+    ],
+    "examYear": "112",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 32,
+    "verifiedDate": "2024-05-01",
+    "sourceCitation": "考選部 112 年專技高考律師第一試 綜合法學(一)第32題",
+    "officialCorrectRate": 51.2
+  },
+  {
+    "id": "113-BAR-INTPUB-01",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "PUB_INT_LAW",
+    "chapterId": "PUB_INT_LAW-1",
+    "chapterNo": 1,
+    "chapterTitle": "條約法與國際法源體系",
+    "prompt": "依維也納條約法公約（VCLT）之規定，關於國家對多邊條約提出「保留（Reservation）」，下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "條約若未明文禁止保留，國家得於簽署或批准時隨意提出任何性質之保留，不受任何限制"
+      },
+      {
+        "label": "B",
+        "text": "國家所提出之保留如與該條約之「目的及宗旨不相容（incompatible with the object and purpose）」者，不得提出"
+      },
+      {
+        "label": "C",
+        "text": "其他締約國對於保留提出反對者，該條約在全體締約國間一律當然直接失效"
+      },
+      {
+        "label": "D",
+        "text": "保留一經提出並生效後，保留國即永久喪失隨時撤回該保留之權利"
+      }
+    ],
+    "correctAnswer": "B",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "依維也納條約法公約第 19 條第 3 款，保留不得牴觸條約之目的與宗旨。",
+        "trapType": "誤認保留無任何限制"
+      },
+      "B": {
+        "isCorrect": true,
+        "reason": "維也納條約法公約第 19 條 (c) 款明定：國家提出之保留不得牴觸條約之目的及宗旨。",
+        "trapType": "正解無陷阱"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "依公約第 21 條，反對保留國如未明確反對條約生效，條約在兩國間除保留條款外依然生效。",
+        "trapType": "誤認反對保留致全約失效"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "依公約第 22 條，保留得隨時予以撤回，毋須徵得已接受保留國家之同意。",
+        "trapType": "誤認保留不得撤回"
+      }
+    },
+    "tags": [
+      "#國際公法",
+      "#維也納條約法公約",
+      "#條約保留",
+      "#目的及宗旨"
+    ],
+    "difficulty": "MEDIUM",
+    "relatedLaws": [
+      {
+        "lawName": "維也納條約法公約",
+        "articleNo": "第 19 條"
+      }
+    ],
+    "relatedCases": [],
+    "examYear": "113",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 42,
+    "verifiedDate": "2024-08-10",
+    "sourceCitation": "考選部 113 年專技高考律師第一試 綜合法學(一)第42題",
+    "officialCorrectRate": 61.5
+  },
+  {
+    "id": "112-BAR-INTPRI-01",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "PRIV_INT_LAW",
+    "chapterId": "PRIV_INT_LAW-1",
+    "chapterNo": 1,
+    "chapterTitle": "涉外民事法律適用總論與反致制度",
+    "prompt": "關於我國「涉外民事法律適用法」第 6 條所規定之「反致（Renvoi）」制度，下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "我國涉外法全面承認間接反致與轉致，且無任何例外限制"
+      },
+      {
+        "label": "B",
+        "text": "依涉外法應適用當事人本國法時，如依其本國法應適用中華民國法律者，適用中華民國法律"
+      },
+      {
+        "label": "C",
+        "text": "當事人依法律得合意選擇準據法時（如涉外契約），亦得適用反致原則以查明他國衝突規範"
+      },
+      {
+        "label": "D",
+        "text": "反致原則可適用於任何涉外法律關係，包括物權準據法與票據行為準據法"
+      }
+    ],
+    "correctAnswer": "B",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "涉外法第 6 條本文僅承認「直接反致」，且於但書排除當事人意思自主或指定特定外國法之情形。",
+        "trapType": "誤認全面承認轉致"
+      },
+      "B": {
+        "isCorrect": true,
+        "reason": "涉外民事法律適用法第 6 條前段明定：「依本法應適用當事人本國法，而依其本國法之規定應適用中華民國法律者，適用中華民國法律。」此即直接反致。",
+        "trapType": "正解無陷阱"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "涉外法第 6 條但書明定：「由當事人指定應適用之法律者，不適用之。」意思自主排除反致。",
+        "trapType": "忽略意思自主排除反致"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "涉外法上反致僅適用於依本法指定「當事人本國法」之身分或行為能力領域，不適用物權或契約合意。",
+        "trapType": "無限擴張反致適用範圍"
+      }
+    },
+    "tags": [
+      "#國際私法",
+      "#涉外民事法律適用法",
+      "#反致",
+      "#意思自主排除"
+    ],
+    "difficulty": "HARD",
+    "relatedLaws": [
+      {
+        "lawName": "涉外民事法律適用法",
+        "articleNo": "第 6 條"
+      }
+    ],
+    "relatedCases": [],
+    "examYear": "112",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 46,
+    "verifiedDate": "2024-05-01",
+    "sourceCitation": "考選部 112 年專技高考律師第一試 綜合法學(一)第46題",
+    "officialCorrectRate": 53.4
+  },
+  {
+    "id": "113-BAR-LETH-01",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "LEGAL_ETH",
+    "chapterId": "LEGAL_ETH-1",
+    "chapterNo": 1,
+    "chapterTitle": "律師利益衝突禁止與忠任義務",
+    "prompt": "依律師法與律師倫理規範，關於律師利益衝突禁止之規定，下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "律師就同一事件，只要雙方當事人均出具書面同意，即得同時接受原告與被告雙方之委任"
+      },
+      {
+        "label": "B",
+        "text": "律師曾任法官或檢察官者，自離職之日起三年內，不得在其離職前三年內曾任職之法院或檢察署辦理律師職務"
+      },
+      {
+        "label": "C",
+        "text": "同一事務所之其他律師曾受委任辦理之事件，本律師離職後得隨意接受對造當事人之委任，不受任何限制"
+      },
+      {
+        "label": "D",
+        "text": "律師接受委任後，縱發現與現存客戶存在實質利益衝突，仍得自行決定繼續代理雙方"
+      }
+    ],
+    "correctAnswer": "B",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "律師法第 34 條第 1 款規定，同一事件接受雙方委任為「絕對利益衝突禁止」，縱有雙方同意亦不得為之。",
+        "trapType": "誤以為雙方同意可免除雙方代理絕對禁止"
+      },
+      "B": {
+        "isCorrect": true,
+        "reason": "依律師法第 37 條規定，司法人員離職後三年內，不得在其離職前三年內曾任職務之法院或檢察署辦理律師職務（迴避旋轉門條款）。",
+        "trapType": "正解無陷阱"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "依律師倫理規範第 32 條，曾任同一事務所之派生利益衝突，於同受保密拘束範圍內仍受限制。",
+        "trapType": "忽略事務所派生利益衝突限制"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "發現利益衝突時應依法終止委任或迴避，不得任意繼續代理。",
+        "trapType": "違反忠任義務"
+      }
+    },
+    "tags": [
+      "#法律倫理",
+      "#律師法",
+      "#利益衝突",
+      "#旋轉門條款"
+    ],
+    "difficulty": "MEDIUM",
+    "relatedLaws": [
+      {
+        "lawName": "律師法",
+        "articleNo": "第 34 條"
+      },
+      {
+        "lawName": "律師法",
+        "articleNo": "第 37 條"
+      }
+    ],
+    "relatedCases": [],
+    "examYear": "113",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 49,
+    "verifiedDate": "2024-08-10",
+    "sourceCitation": "考選部 113 年專技高考律師第一試 綜合法學(一)第49題",
+    "officialCorrectRate": 72.1
+  },
+  {
+    "id": "111-BAR-CIVIL-01",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "CIVIL",
+    "chapterId": "CIVIL-3",
+    "chapterNo": 3,
+    "chapterTitle": "代理（無權代理與表見代理）",
+    "prompt": "關於民法上「表見代理」之規定，下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "本人由自己之行為表示以代理權授與他人者，縱第三人明知他人無代理權，本人仍應對第三人負授權人之責任"
+      },
+      {
+        "label": "B",
+        "text": "本人知他人表示為其代理人而不為反對之表示者，對於善意無過失之相對人，應負授權人之責任"
+      },
+      {
+        "label": "C",
+        "text": "表見代理之法律效果為代理行為直接無效，相對人僅得請求損害賠償"
+      },
+      {
+        "label": "D",
+        "text": "本人將印鑑章交付他人保管，他人擅自以本人名義簽訂保證契約，一律當然構成表見代理"
+      }
+    ],
+    "correctAnswer": "B",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "依民法第 169 條但書規定，第三人明知其無代理權或可得而知者，本人不負授權人責任。保護對象僅限善意第三人。",
+        "trapType": "漏看民法第169條但書善意要件"
+      },
+      "B": {
+        "isCorrect": true,
+        "reason": "民法第 169 條本文明定：「由自己之行為表示以代理權授與他人，或知他人表示為其代理人而不為反對之表示者，對於第三人應負授權人之責任。」完全符合。",
+        "trapType": "正解無陷阱"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "表見代理之效果為「發生有效代理之法律效果」，本人直接負契約責任，並非無效。",
+        "trapType": "混淆表見代理效果與無效效果"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "最高法院 70 年台上字第 657 號判例：單純印章交付保管，不足以認定授權外觀，不當然成立表見代理。",
+        "trapType": "誤判印鑑交付必然成立表見代理之實務見解"
+      }
+    },
+    "tags": [
+      "#民法總則",
+      "#表見代理",
+      "#民法§169",
+      "#印鑑章實務"
+    ],
+    "difficulty": "MEDIUM",
+    "relatedLaws": [
+      {
+        "lawName": "民法",
+        "articleNo": "第 169 條"
+      }
+    ],
+    "relatedCases": [
+      {
+        "court": "最高法院",
+        "caseNo": "70年台上字第657號判例",
+        "summary": "單純交付印章不成立表見代理。",
+        "isVerified": true
+      }
+    ],
+    "examYear": "111",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 9,
+    "verifiedDate": "2024-05-01",
+    "sourceCitation": "考選部 111 年專技高考律師第一試 綜合法學(二)第9題",
+    "officialCorrectRate": 63.8
+  },
+  {
+    "id": "113-BAR-CIVIL-02",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "CIVIL",
+    "chapterId": "CIVIL-2",
+    "chapterNo": 2,
+    "chapterTitle": "法律行為、意思表示瑕疵（通謀/錯誤/詐欺/脅迫）",
+    "prompt": "甲為躲避債權人強制執行，與好友乙通謀虛偽意思表示，將甲所有之土地一筆登記移轉於乙名下。嗣後乙未經甲同意，擅自將該地出賣並移轉登記於善意不知情之丙。下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "甲乙間之所有權移轉登記有效，乙取得所有權，丙亦繼受取得所有權"
+      },
+      {
+        "label": "B",
+        "text": "甲乙間通謀虛偽意思表示無效，但甲不得以該無效對抗善意第三人丙，丙確定取得土地所有權"
+      },
+      {
+        "label": "C",
+        "text": "甲得向善意之丙主張塗銷登記返還土地，丙僅能向乙請求損害賠償"
+      },
+      {
+        "label": "D",
+        "text": "丙縱為善意，因乙無處分權，必須經過甲之承認始能取得所有權"
+      }
+    ],
+    "correctAnswer": "B",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "依民法第 87 條第 1 項本文，表意人與相對人通謀而為虛偽意思表示者無效，乙並未取得實質所有權。",
+        "trapType": "誤將通謀虛偽表示當成有效"
+      },
+      "B": {
+        "isCorrect": true,
+        "reason": "依民法第 87 條第 1 項但書規定：「但不得以其無效對抗善意第三人。」善意第三人丙之取得受法律保護，甲不得對丙主張無效。",
+        "trapType": "正解無陷阱"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "甲不得以無效對抗善意之丙，自不得請求丙塗銷登記。",
+        "trapType": "忽略善意第三人保護規定"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "民法第87條但書為善意第三人之直接權利保護，毋須原所有權人承認。",
+        "trapType": "誤將民法§87但書等同於無權處分§118待承認"
+      }
+    },
+    "tags": [
+      "#民法",
+      "#通謀虛偽意思表示",
+      "#善意第三人",
+      "#民法§87"
+    ],
+    "difficulty": "MEDIUM",
+    "relatedLaws": [
+      {
+        "lawName": "民法",
+        "articleNo": "第 87 條"
+      }
+    ],
+    "relatedCases": [],
+    "examYear": "113",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 1,
+    "verifiedDate": "2024-08-10",
+    "sourceCitation": "考選部 113 年專技高考律師第一試 綜合法學(二)第1題",
+    "officialCorrectRate": 74.2
+  },
+  {
+    "id": "113-BAR-CIVPROC-01",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "CIVIL_PROC",
+    "chapterId": "CIVIL_PROC-3",
+    "chapterNo": 3,
+    "chapterTitle": "共同訴訟之類型判別（必要/普通/固有必要）",
+    "prompt": "甲、乙、丙三人共有土地一筆，共有人甲未經乙、丙同意，擅自將整筆土地出賣並移轉登記給丁。乙欲起訴請求丁塗銷該所有權移轉登記並返還土地給全體共有人。下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "乙必須與丙共同為原告一同起訴，否則當事人不適格"
+      },
+      {
+        "label": "B",
+        "text": "乙得單獨一人為原告提起訴訟，請求丁將土地返還於共有人全體"
+      },
+      {
+        "label": "C",
+        "text": "乙若單獨起訴獲勝訴判決，該判決效力不及於未一同起訴之丙"
+      },
+      {
+        "label": "D",
+        "text": "乙起訴請求塗銷登記為固有必要共同訴訟，欠缺丙之起訴法院應逕以判決駁回"
+      }
+    ],
+    "correctAnswer": "B",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "依民法第 821 條及民事訴訟法第 56 條之 1，共有人各得單獨為全體共有人之利益行使所有權妨害除去與物上返還請求權，非固有必要共同訴訟。",
+        "trapType": "誤將民法§821物上請求當成固有必要共同訴訟"
+      },
+      "B": {
+        "isCorrect": true,
+        "reason": "民法第 821 條但書明定：「各共有人對於第三人，得就共有物之全部為本於所有權之請求。但回復共有物之請求，僅得為共有人全體之利益為之。」故乙得單獨起訴。",
+        "trapType": "正解無陷阱"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "依民事訴訟法第 401 條第 2 項，為確定私權由他人為原告之確定判決，其利益及於共有人全體。",
+        "trapType": "忽略判決利益及於全體共有人"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "依民法第821條為單獨訴訟權限，非當事人不適格。",
+        "trapType": "誤判當事人適格要件"
+      }
+    },
+    "tags": [
+      "#民事訴訟法",
+      "#共同訴訟",
+      "#共有物返還",
+      "#民法§821",
+      "#民訴§56"
+    ],
+    "difficulty": "HARD",
+    "relatedLaws": [
+      {
+        "lawName": "民法",
+        "articleNo": "第 821 條"
+      },
+      {
+        "lawName": "民事訴訟法",
+        "articleNo": "第 56 條"
+      }
+    ],
+    "relatedCases": [
+      {
+        "court": "最高法院",
+        "caseNo": "28年上字第2361號判例",
+        "summary": "共有人各得單獨起訴請求回復共有物。",
+        "isVerified": true
+      }
+    ],
+    "examYear": "113",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 22,
+    "verifiedDate": "2024-08-10",
+    "sourceCitation": "考選部 113 年專技高考律師第一試 綜合法學(二)第22題",
+    "officialCorrectRate": 55.4
+  },
+  {
+    "id": "112-BAR-CORP-01",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "CORP",
+    "chapterId": "CORP-3",
+    "chapterNo": 3,
+    "chapterTitle": "董事會權限、董事忠實義務與注意義務（§23）",
+    "prompt": "關於公司法第 23 條公司負責人之「忠實義務」與「歸入權」，下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "公司負責人違反忠實義務為自己取得利益時，股東會得決議將其所得利益視為公司之所得，該歸入權自所得利益時起逾三年不行使而消滅"
+      },
+      {
+        "label": "B",
+        "text": "公司負責人違反忠實義務為自己或他人為該行為時，股東會得決議將該行為之所得視為公司之所得。此項請求權自所得利益時起一年間不行使而消滅"
+      },
+      {
+        "label": "C",
+        "text": "歸入權之行使專屬於董事會之特別決議，股東會無權決議行使歸入權"
+      },
+      {
+        "label": "D",
+        "text": "公司負責人應忠實執行業務並盡善良管理人注意義務，如違反致公司受損害，僅負侵權行為責任，不負契約賠償責任"
+      }
+    ],
+    "correctAnswer": "B",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "依公司法第 23 條第 3 項，歸入權之除斥期間為「自所得利益之時起一年間」不行使而消滅，非三年。",
+        "trapType": "將歸入權1年除斥期間記成3年"
+      },
+      "B": {
+        "isCorrect": true,
+        "reason": "公司法第 23 條第 2 項及第 3 項明定：負責人違反忠實義務，股東會得決議將該行為之所得視為公司之所得，自所得利益時起一年間不行使而消滅。",
+        "trapType": "正解無陷阱"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "公司法第 23 條第 2 項明定行使歸入權之機關為「股東會」，非董事會。",
+        "trapType": "決議機關主體混淆"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "公司法第 23 條第 1 項明定受損害時應對公司負損害賠償責任，屬法定委任契約損害賠償。",
+        "trapType": "責任性質誤判"
+      }
+    },
+    "tags": [
+      "#公司法",
+      "#負責人忠實義務",
+      "#歸入權",
+      "#公司法§23",
+      "#一年除斥期間"
+    ],
+    "difficulty": "MEDIUM",
+    "relatedLaws": [
+      {
+        "lawName": "公司法",
+        "articleNo": "第 23 條"
+      }
+    ],
+    "relatedCases": [],
+    "examYear": "112",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 34,
+    "verifiedDate": "2024-05-01",
+    "sourceCitation": "考選部 112 年專技高考律師第一試 綜合法學(二)第34題",
+    "officialCorrectRate": 66.8
+  },
+  {
+    "id": "113-BAR-INSUR-01",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "INSUR",
+    "chapterId": "INSUR-1",
+    "chapterNo": 1,
+    "chapterTitle": "據實告知義務與保險契約效力（保險法§64）",
+    "prompt": "關於保險法第 64 條要保人之「據實說明義務」，下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "要保人故意隱匿重要事項，保險人解除契約之權利，自保險契約訂立時起算，不受任何除斥期間限制"
+      },
+      {
+        "label": "B",
+        "text": "要保人故意隱匿事項，但危險之發生未基於其說明或未說明之事實者（即無因果關係），保險人仍得據以解除契約"
+      },
+      {
+        "label": "C",
+        "text": "保險人知有解除之原因後，經過一個月不行使而消滅；或契約訂立後經過二年，即不得解除契約"
+      },
+      {
+        "label": "D",
+        "text": "保險契約經保險人依第 64 條解除後，要保人得請求全額退還已繳之全部保險費"
+      }
+    ],
+    "correctAnswer": "C",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "依保險法第 64 條第 3 項，知悉起 1 個月，契約訂立起逾 2 年即不得解除。",
+        "trapType": "忽略第64條第3項除斥期間"
+      },
+      "B": {
+        "isCorrect": false,
+        "reason": "保險法第 64 條第 2 項但書明定：「但要保人證明危險之發生未基於其說明或未說明之事實時，不在此限。」有因果關係抗辯。",
+        "trapType": "忽略第64條第2項但書因果關係抗辯"
+      },
+      "C": {
+        "isCorrect": true,
+        "reason": "保險法第 64 條第 3 項明定：「前項解除契約權，自保險人知有解除之原因後，經過一個月不行使而消滅；或契約訂立後經過二年，即不得解除契約。」完全符合。",
+        "trapType": "正解無陷阱"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "依保險法第 25 條，保險人因要保人詐欺或隱匿解除契約時，無須返還保費。",
+        "trapType": "誤以為解約得請求返還保費"
+      }
+    },
+    "tags": [
+      "#保險法",
+      "#據實說明義務",
+      "#保險法§64",
+      "#一個月除斥期間"
+    ],
+    "difficulty": "MEDIUM",
+    "relatedLaws": [
+      {
+        "lawName": "保險法",
+        "articleNo": "第 64 條"
+      },
+      {
+        "lawName": "保險法",
+        "articleNo": "第 25 條"
+      }
+    ],
+    "relatedCases": [],
+    "examYear": "113",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 38,
+    "verifiedDate": "2024-08-10",
+    "sourceCitation": "考選部 113 年專技高考律師第一試 綜合法學(二)第38題",
+    "officialCorrectRate": 69.1
+  },
+  {
+    "id": "112-BAR-NEGINST-01",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "NEG_INST",
+    "chapterId": "NEG_INST-1",
+    "chapterNo": 1,
+    "chapterTitle": "票據無因性與票據抗辯限制",
+    "prompt": "關於票據法第 13 條「票據抗辯之限制」，下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "票據債務人得以自己與執票人之前手間所存抗辯之事由對抗執票人"
+      },
+      {
+        "label": "B",
+        "text": "票據債務人不得以自己與執票人之前手間所存抗辯之事由對抗執票人。但執票人取得票據出於惡意者，不在此限"
+      },
+      {
+        "label": "C",
+        "text": "執票人以無對價取得票據者，仍享有優於其前手之票據權利"
+      },
+      {
+        "label": "D",
+        "text": "票據行為一經簽名即生絕對效力，縱發票人為無行為能力人，該票據行為亦屬有效"
+      }
+    ],
+    "correctAnswer": "B",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "違反票據法第 13 條本文票據抗辯切斷原則。債務人不得以前手抗辯事由對抗善意執票人。",
+        "trapType": "否定票據抗辯切斷原則"
+      },
+      "B": {
+        "isCorrect": true,
+        "reason": "票據法第 13 條本文及但書明定：「票據債務人不得以自己與執票人之前手間所存抗辯之事由對抗執票人。但執票人取得票據出於惡意者，不在此限。」",
+        "trapType": "正解無陷阱"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "依票據法第 14 條第 2 項，無對價或不相當對價取得票據者，不得享有優於其前手之權利。",
+        "trapType": "忽略無對價取得票據不得優於前手之規定"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "無行為能力人之票據行為依民法及票據法為絕對無效（物之抗辯）。",
+        "trapType": "誤認無行為能力簽名有效"
+      }
+    },
+    "tags": [
+      "#票據法",
+      "#票據無因性",
+      "#票據抗辯限制",
+      "#票據法§13"
+    ],
+    "difficulty": "MEDIUM",
+    "relatedLaws": [
+      {
+        "lawName": "票據法",
+        "articleNo": "第 13 條"
+      },
+      {
+        "lawName": "票據法",
+        "articleNo": "第 14 條"
+      }
+    ],
+    "relatedCases": [],
+    "examYear": "112",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 41,
+    "verifiedDate": "2024-05-01",
+    "sourceCitation": "考選部 112 年專技高考律師第一試 綜合法學(二)第41題",
+    "officialCorrectRate": 71.5
+  },
+  {
+    "id": "113-BAR-COMPEXEC-01",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "COMP_EXEC",
+    "chapterId": "COMP_EXEC-1",
+    "chapterNo": 1,
+    "chapterTitle": "執行救濟與異議之訴體系",
+    "prompt": "關於強制執行法第 14 條「債務人異議之訴」與第 15 條「第三人異議之訴」，下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "債務人異議之訴之目的在排除特定標的物之執行；第三人異議之訴之目的在排除執行名義之執行力"
+      },
+      {
+        "label": "B",
+        "text": "執行名義成立後，如有消滅或妨礙債權人請求之事由發生，債務人得於強制執行程序終結前，向執行法院對債權人提起異議之訴"
+      },
+      {
+        "label": "C",
+        "text": "第三人就執行標的物有足以排除強制執行之權利者，必須在強制執行開始前提起，執行程序開始後即不得提起"
+      },
+      {
+        "label": "D",
+        "text": "提起債務人異議之訴，強制執行程序即當然自動停止，無須向法院聲請停止執行"
+      }
+    ],
+    "correctAnswer": "B",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "兩者目的顛倒。債務人異議之訴（§14）在排除執行名義之執行力；第三人異議之訴（§15）在排除特定執行標的物之執行。",
+        "trapType": "顛倒兩大異議之訴之核心目的"
+      },
+      "B": {
+        "isCorrect": true,
+        "reason": "強制執行法第 14 條第 1 項明定：「執行名義成立後，如有消滅或妨礙債權人請求之事由發生，債務人得於強制執行程序終結前，向執行法院對債權人提起異議之訴。」",
+        "trapType": "正解無陷阱"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "依強制執行法第 15 條，第三人異議之訴係「於強制執行程序終結前」提起，非限於開始前。",
+        "trapType": "起訴期間誤判"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "依強制執行法第 18 條，提起異議之訴不停止執行，須另向法院聲請供擔保停止執行。",
+        "trapType": "誤認異議之訴具有當然停止執行效力"
+      }
+    },
+    "tags": [
+      "#強制執行法",
+      "#債務人異議之訴",
+      "#第三人異議之訴",
+      "#強執§14-§18"
+    ],
+    "difficulty": "HARD",
+    "relatedLaws": [
+      {
+        "lawName": "強制執行法",
+        "articleNo": "第 14 條"
+      },
+      {
+        "lawName": "強制執行法",
+        "articleNo": "第 15 條"
+      },
+      {
+        "lawName": "強制執行法",
+        "articleNo": "第 18 條"
+      }
+    ],
+    "relatedCases": [],
+    "examYear": "113",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 44,
+    "verifiedDate": "2024-08-10",
+    "sourceCitation": "考選部 113 年專技高考律師第一試 綜合法學(二)第44題",
+    "officialCorrectRate": 58.2
+  },
+  {
+    "id": "110-BAR-SECREG-01",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "SEC_REG",
+    "chapterId": "SEC_REG-1",
+    "chapterNo": 1,
+    "chapterTitle": "內線交易與證券市場規範",
+    "prompt": "依證券交易法第 157 條之 1 關於「內線交易」之禁止規範，下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "上市櫃公司董事只要知悉重大影響股票價格之消息，縱該消息尚未明確，一律不得買賣公司股票"
+      },
+      {
+        "label": "B",
+        "text": "內部人於實際知悉重大消息明確後，在該消息未公開前或公開後十八小時內，不得對該公司之上市股票買入或賣出"
+      },
+      {
+        "label": "C",
+        "text": "內線交易之規範主體僅限於公司董監事及經理人，基於職業關係獲悉消息之人不受規範"
+      },
+      {
+        "label": "D",
+        "text": "喪失內部人身分未滿一年者，仍受內線交易禁止之規範"
+      }
+    ],
+    "correctAnswer": "B",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "依證券交易法第 157 條之 1 第 1 項，須重大消息「明確」後，始進入禁止交易之沉澱期。",
+        "trapType": "未符重大消息明確性要件"
+      },
+      "B": {
+        "isCorrect": true,
+        "reason": "證券交易法第 157 條之 1 第 1 項明定：實際知悉重大消息「明確」後，在未公開前或「公開後十八小時內」，不得買入或賣出。",
+        "trapType": "正解無陷阱"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "依證交法第 157 條之 1 第 1 項第 3 款，基於職業或控制關係獲悉消息之人（如會計師、律師）亦為受規範主體。",
+        "trapType": "漏看職業關係人受內線規範"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "依同條第 1 項第 4 款，喪失身分「未滿六個月」者受規範，非一年。",
+        "trapType": "將6個月冷卻期記成1年"
+      }
+    },
+    "tags": [
+      "#證券交易法",
+      "#內線交易",
+      "#重大消息明確",
+      "#18小時沉澱期",
+      "#證交法§157-1"
+    ],
+    "difficulty": "MEDIUM",
+    "relatedLaws": [
+      {
+        "lawName": "證券交易法",
+        "articleNo": "第 157 條之 1"
+      }
+    ],
+    "relatedCases": [],
+    "examYear": "110",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 14,
+    "verifiedDate": "2024-05-01",
+    "sourceCitation": "考選部 110 年專技高考律師第一試 綜合法學(二)第14題",
+    "officialCorrectRate": 61.2
+  },
+  {
+    "id": "113-BAR-LEGENG-01",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "LEGAL_ENG",
+    "chapterId": "LEGAL_ENG-1",
+    "chapterNo": 1,
+    "chapterTitle": "英美法核心憲政與訴訟詞彙",
+    "prompt": "In U.S. Constitutional Law, which of the following legal doctrines prohibits the government from introducing evidence obtained in violation of the Fourth Amendment protection against unreasonable searches and seizures in a criminal trial?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The Doctrine of Stare Decisis"
+      },
+      {
+        "label": "B",
+        "text": "The Exclusionary Rule"
+      },
+      {
+        "label": "C",
+        "text": "The Plain Meaning Rule"
+      },
+      {
+        "label": "D",
+        "text": "The Double Jeopardy Clause"
+      }
+    ],
+    "correctAnswer": "B",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "Stare Decisis 指「遵循先例原則」，要求法院遵循先前判決之先例拘束力。",
+        "trapType": "名詞定義混淆"
+      },
+      "B": {
+        "isCorrect": true,
+        "reason": "The Exclusionary Rule 即刑事證據法上之「證據排除法則」（Mapp v. Ohio, 1961），違法搜索扣押取得之證據在審判中不得作為不利於被告之證據。",
+        "trapType": "正解無陷阱"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "The Plain Meaning Rule 為契約法與成文法解釋之「文義解釋規則」。",
+        "trapType": "法規解釋名詞混淆"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "The Double Jeopardy Clause 為美國憲法第五修正案之「禁止雙重追訴/一事不二罰條款」。",
+        "trapType": "混淆第五修正案"
+      }
+    },
+    "tags": [
+      "#法學英文",
+      "#ExclusionaryRule",
+      "#FourthAmendment",
+      "#證據排除法則"
+    ],
+    "difficulty": "MEDIUM",
+    "relatedLaws": [
+      {
+        "lawName": "美國憲法",
+        "articleNo": "第四修正案 (Fourth Amendment)"
+      }
+    ],
+    "relatedCases": [
+      {
+        "court": "US Supreme Court",
+        "caseNo": "Mapp v. Ohio, 367 U.S. 643 (1961)",
+        "summary": "Exclusionary rule applies to states.",
+        "isVerified": true
+      }
+    ],
+    "examYear": "113",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 49,
+    "verifiedDate": "2024-08-10",
+    "sourceCitation": "考選部 113 年專技高考律師第一試 綜合法學(二)第49題",
+    "officialCorrectRate": 78.4
   }
 ];
 
