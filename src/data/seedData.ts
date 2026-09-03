@@ -173,7 +173,7 @@ export const SUBJECTS_INFO: SubjectInfo[] = [
 ];
 
 export const CHAPTER_SEED_LIST: {
-  subjectId: string;
+  subjectId: SubjectId;
   chapterNo: number;
   title: string;
   weightStars: number;
@@ -181,70 +181,825 @@ export const CHAPTER_SEED_LIST: {
   isWeakness: boolean;
   status: 'UNLEARNED' | 'LEARNING' | 'COMPLETED' | 'NEEDS_REVIEW' | 'WEAKNESS' | 'MASTERED';
 }[] = [
-  // 行政法
-  { subjectId: 'ADMIN', chapterNo: 1, title: '行政法基本原理原則與法源', weightStars: 5, masteryPercentage: 92, isWeakness: false, status: 'MASTERED' },
-  { subjectId: 'ADMIN', chapterNo: 2, title: '行政組織與公物法制', weightStars: 4, masteryPercentage: 78, isWeakness: false, status: 'COMPLETED' },
-  { subjectId: 'ADMIN', chapterNo: 3, title: '行政處分之成立、瑕疵與廢止撤銷', weightStars: 5, masteryPercentage: 58, isWeakness: true, status: 'WEAKNESS' },
-  { subjectId: 'ADMIN', chapterNo: 4, title: '行政契約之締結與履約爭議', weightStars: 3, masteryPercentage: 85, isWeakness: false, status: 'MASTERED' },
-  { subjectId: 'ADMIN', chapterNo: 5, title: '法規命令與行政規則之界限', weightStars: 4, masteryPercentage: 74, isWeakness: false, status: 'NEEDS_REVIEW' },
-  { subjectId: 'ADMIN', chapterNo: 6, title: '行政程序法制與正當法律程序', weightStars: 4, masteryPercentage: 69, isWeakness: false, status: 'LEARNING' },
-  { subjectId: 'ADMIN', chapterNo: 7, title: '行政罰之責任條件與處罰裁量', weightStars: 4, masteryPercentage: 81, isWeakness: false, status: 'COMPLETED' },
-  { subjectId: 'ADMIN', chapterNo: 8, title: '行政執行（公法金錢/行為不行為）', weightStars: 3, masteryPercentage: 73, isWeakness: false, status: 'COMPLETED' },
-  { subjectId: 'ADMIN', chapterNo: 9, title: '國家賠償與損失補償體系', weightStars: 4, masteryPercentage: 88, isWeakness: false, status: 'MASTERED' },
-  { subjectId: 'ADMIN', chapterNo: 10, title: '訴願救濟程序與管轄', weightStars: 3, masteryPercentage: 76, isWeakness: false, status: 'COMPLETED' },
-  { subjectId: 'ADMIN', chapterNo: 11, title: '行政訴訟訴訟類型與裁判', weightStars: 5, masteryPercentage: 62, isWeakness: true, status: 'WEAKNESS' },
-  { subjectId: 'ADMIN', chapterNo: 12, title: '暫時權利保護（停止執行/假處分）', weightStars: 4, masteryPercentage: 70, isWeakness: false, status: 'NEEDS_REVIEW' },
-
-  // 憲法
-  { subjectId: 'CONST', chapterNo: 1, title: '憲法基本原則與國民主權', weightStars: 4, masteryPercentage: 88, isWeakness: false, status: 'MASTERED' },
-  { subjectId: 'CONST', chapterNo: 2, title: '平等權與各類差別待遇審查基準', weightStars: 5, masteryPercentage: 82, isWeakness: false, status: 'COMPLETED' },
-  { subjectId: 'CONST', chapterNo: 3, title: '人身自由與正當法律程序（釋字384/588）', weightStars: 5, masteryPercentage: 90, isWeakness: false, status: 'MASTERED' },
-  { subjectId: 'CONST', chapterNo: 4, title: '言論自由、新聞自由與集會自由', weightStars: 5, masteryPercentage: 75, isWeakness: false, status: 'COMPLETED' },
-  { subjectId: 'CONST', chapterNo: 5, title: '工作權、財產權與生存權保障', weightStars: 4, masteryPercentage: 79, isWeakness: false, status: 'COMPLETED' },
-  { subjectId: 'CONST', chapterNo: 6, title: '權力分立：總統、行政院與立法院制衡', weightStars: 4, masteryPercentage: 64, isWeakness: true, status: 'WEAKNESS' },
-  { subjectId: 'CONST', chapterNo: 7, title: '司法獨立與法官制度', weightStars: 3, masteryPercentage: 84, isWeakness: false, status: 'MASTERED' },
-  { subjectId: 'CONST', chapterNo: 8, title: '憲法訴訟法：法規範憲法審查與裁判審查', weightStars: 5, masteryPercentage: 67, isWeakness: false, status: 'LEARNING' },
-
-  // 刑法
-  { subjectId: 'CRIM', chapterNo: 1, title: '罪刑法定原則與刑法之適用效力', weightStars: 3, masteryPercentage: 95, isWeakness: false, status: 'MASTERED' },
-  { subjectId: 'CRIM', chapterNo: 2, title: '構成要件該當性與因果關係', weightStars: 5, masteryPercentage: 86, isWeakness: false, status: 'COMPLETED' },
-  { subjectId: 'CRIM', chapterNo: 3, title: '違法性與阻卻違法事由（正當防衛/緊急避難）', weightStars: 5, masteryPercentage: 89, isWeakness: false, status: 'MASTERED' },
-  { subjectId: 'CRIM', chapterNo: 4, title: '未遂犯、中止犯與不能未遂', weightStars: 5, masteryPercentage: 63, isWeakness: true, status: 'WEAKNESS' },
-  { subjectId: 'CRIM', chapterNo: 5, title: '正犯與共犯（共同正犯/教唆犯/幫助犯）', weightStars: 5, masteryPercentage: 72, isWeakness: false, status: 'NEEDS_REVIEW' },
-  { subjectId: 'CRIM', chapterNo: 6, title: '罪數論與競合體系', weightStars: 4, masteryPercentage: 68, isWeakness: false, status: 'LEARNING' },
-  { subjectId: 'CRIM', chapterNo: 7, title: '沒收新制（犯罪所得沒收與第三人沒收）', weightStars: 5, masteryPercentage: 84, isWeakness: false, status: 'COMPLETED' },
-
-  // 刑事訴訟法
-  { subjectId: 'CRIM_PROC', chapterNo: 1, title: '刑事訴訟基本原則與訴訟主體', weightStars: 4, masteryPercentage: 82, isWeakness: false, status: 'COMPLETED' },
-  { subjectId: 'CRIM_PROC', chapterNo: 2, title: '辯護人權限與實質有效辯護', weightStars: 4, masteryPercentage: 78, isWeakness: false, status: 'COMPLETED' },
-  { subjectId: 'CRIM_PROC', chapterNo: 3, title: '強制處分：搜索、扣押與令狀原則', weightStars: 5, masteryPercentage: 65, isWeakness: true, status: 'WEAKNESS' },
-  { subjectId: 'CRIM_PROC', chapterNo: 4, title: '強制處分：逮捕、拘提與羈押審查', weightStars: 5, masteryPercentage: 75, isWeakness: false, status: 'COMPLETED' },
-  { subjectId: 'CRIM_PROC', chapterNo: 5, title: '通訊保障及監察法與特殊偵查手段', weightStars: 3, masteryPercentage: 80, isWeakness: false, status: 'COMPLETED' },
-  { subjectId: 'CRIM_PROC', chapterNo: 6, title: '證據法總論與嚴格證明法則', weightStars: 4, masteryPercentage: 71, isWeakness: false, status: 'NEEDS_REVIEW' },
-  { subjectId: 'CRIM_PROC', chapterNo: 7, title: '傳聞法則與傳聞例外（§159-1~§159-5）', weightStars: 5, masteryPercentage: 54, isWeakness: true, status: 'WEAKNESS' },
-  { subjectId: 'CRIM_PROC', chapterNo: 8, title: '被告自白任意性與補強證據', weightStars: 4, masteryPercentage: 86, isWeakness: false, status: 'MASTERED' },
-
-  // 民法
-  { subjectId: 'CIVIL', chapterNo: 1, title: '權利主體、客體與權利能力/行為能力', weightStars: 4, masteryPercentage: 90, isWeakness: false, status: 'MASTERED' },
-  { subjectId: 'CIVIL', chapterNo: 2, title: '法律行為、意思表示瑕疵（通謀/錯誤/詐欺/脅迫）', weightStars: 5, masteryPercentage: 78, isWeakness: false, status: 'COMPLETED' },
-  { subjectId: 'CIVIL', chapterNo: 3, title: '代理（無權代理與表見代理）', weightStars: 5, masteryPercentage: 60, isWeakness: true, status: 'WEAKNESS' },
-  { subjectId: 'CIVIL', chapterNo: 4, title: '消滅時效與除斥期間', weightStars: 4, masteryPercentage: 82, isWeakness: false, status: 'COMPLETED' },
-  { subjectId: 'CIVIL', chapterNo: 5, title: '債總：契約之成立、無因管理與不當得利', weightStars: 5, masteryPercentage: 74, isWeakness: false, status: 'NEEDS_REVIEW' },
-  { subjectId: 'CIVIL', chapterNo: 6, title: '債總：侵權行為責任構成要件與連帶責任', weightStars: 5, masteryPercentage: 79, isWeakness: false, status: 'COMPLETED' },
-  { subjectId: 'CIVIL', chapterNo: 7, title: '債總：債務不履行（給付不能/遲延/不完全給付）', weightStars: 5, masteryPercentage: 68, isWeakness: false, status: 'LEARNING' },
-  { subjectId: 'CIVIL', chapterNo: 8, title: '物權：所有權、善意受讓與無權處分', weightStars: 5, masteryPercentage: 65, isWeakness: true, status: 'WEAKNESS' },
-
-  // 民事訴訟法
-  { subjectId: 'CIVIL_PROC', chapterNo: 1, title: '民事訴訟之基本原則與審判權管轄', weightStars: 4, masteryPercentage: 80, isWeakness: false, status: 'COMPLETED' },
-  { subjectId: 'CIVIL_PROC', chapterNo: 2, title: '當事人能力、當事人適格與訴訟擔當', weightStars: 5, masteryPercentage: 70, isWeakness: false, status: 'NEEDS_REVIEW' },
-  { subjectId: 'CIVIL_PROC', chapterNo: 3, title: '共同訴訟之類型判別（必要/普通/固有必要）', weightStars: 5, masteryPercentage: 51, isWeakness: true, status: 'WEAKNESS' },
-  { subjectId: 'CIVIL_PROC', chapterNo: 4, title: '訴訟標的理論與訴之變更追加', weightStars: 4, masteryPercentage: 62, isWeakness: true, status: 'WEAKNESS' },
-  { subjectId: 'CIVIL_PROC', chapterNo: 5, title: '既判力之客觀範圍、主觀範圍與爭點效', weightStars: 5, masteryPercentage: 55, isWeakness: true, status: 'WEAKNESS' },
-
-  // 公司法
-  { subjectId: 'CORP', chapterNo: 1, title: '公司設立、法人格與資本充實原則', weightStars: 4, masteryPercentage: 85, isWeakness: false, status: 'MASTERED' },
-  { subjectId: 'CORP', chapterNo: 2, title: '股東會召集、決議瑕疵（無效/得撤銷/不成立）', weightStars: 5, masteryPercentage: 66, isWeakness: true, status: 'WEAKNESS' },
-  { subjectId: 'CORP', chapterNo: 3, title: '董事會權限、董事忠實義務與注意義務（§23）', weightStars: 5, masteryPercentage: 77, isWeakness: false, status: 'COMPLETED' }
+  {
+    "subjectId": "ADMIN",
+    "chapterNo": 1,
+    "title": "行政法基本原理原則與法源",
+    "weightStars": 5,
+    "masteryPercentage": 92,
+    "isWeakness": false,
+    "status": "MASTERED"
+  },
+  {
+    "subjectId": "ADMIN",
+    "chapterNo": 2,
+    "title": "行政組織與公物法制",
+    "weightStars": 4,
+    "masteryPercentage": 78,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "ADMIN",
+    "chapterNo": 3,
+    "title": "行政處分之成立、瑕疵與廢止撤銷",
+    "weightStars": 5,
+    "masteryPercentage": 58,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "ADMIN",
+    "chapterNo": 4,
+    "title": "行政契約之締結與履約爭議",
+    "weightStars": 3,
+    "masteryPercentage": 85,
+    "isWeakness": false,
+    "status": "MASTERED"
+  },
+  {
+    "subjectId": "ADMIN",
+    "chapterNo": 5,
+    "title": "法規命令與行政規則之界限",
+    "weightStars": 4,
+    "masteryPercentage": 74,
+    "isWeakness": false,
+    "status": "NEEDS_REVIEW"
+  },
+  {
+    "subjectId": "ADMIN",
+    "chapterNo": 6,
+    "title": "行政程序法制與正當法律程序",
+    "weightStars": 4,
+    "masteryPercentage": 69,
+    "isWeakness": false,
+    "status": "LEARNING"
+  },
+  {
+    "subjectId": "ADMIN",
+    "chapterNo": 7,
+    "title": "行政罰之責任條件與處罰裁量",
+    "weightStars": 4,
+    "masteryPercentage": 81,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "ADMIN",
+    "chapterNo": 8,
+    "title": "行政執行（公法金錢/行為不行為）",
+    "weightStars": 3,
+    "masteryPercentage": 73,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "ADMIN",
+    "chapterNo": 9,
+    "title": "國家賠償與損失補償體系",
+    "weightStars": 4,
+    "masteryPercentage": 88,
+    "isWeakness": false,
+    "status": "MASTERED"
+  },
+  {
+    "subjectId": "ADMIN",
+    "chapterNo": 10,
+    "title": "訴願救濟程序與管轄",
+    "weightStars": 3,
+    "masteryPercentage": 76,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "ADMIN",
+    "chapterNo": 11,
+    "title": "行政訴訟訴訟類型與裁判",
+    "weightStars": 5,
+    "masteryPercentage": 62,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "ADMIN",
+    "chapterNo": 12,
+    "title": "暫時權利保護（停止執行/假處分）",
+    "weightStars": 4,
+    "masteryPercentage": 70,
+    "isWeakness": false,
+    "status": "NEEDS_REVIEW"
+  },
+  {
+    "subjectId": "CONST",
+    "chapterNo": 1,
+    "title": "憲法基本原則與國民主權",
+    "weightStars": 4,
+    "masteryPercentage": 88,
+    "isWeakness": false,
+    "status": "MASTERED"
+  },
+  {
+    "subjectId": "CONST",
+    "chapterNo": 2,
+    "title": "平等權與各類差別待遇審查基準",
+    "weightStars": 5,
+    "masteryPercentage": 82,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "CONST",
+    "chapterNo": 3,
+    "title": "人身自由與正當法律程序（釋字384/588）",
+    "weightStars": 5,
+    "masteryPercentage": 90,
+    "isWeakness": false,
+    "status": "MASTERED"
+  },
+  {
+    "subjectId": "CONST",
+    "chapterNo": 4,
+    "title": "言論自由、新聞自由與集會自由",
+    "weightStars": 5,
+    "masteryPercentage": 75,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "CONST",
+    "chapterNo": 5,
+    "title": "工作權、財產權與生存權保障",
+    "weightStars": 4,
+    "masteryPercentage": 79,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "CONST",
+    "chapterNo": 6,
+    "title": "權力分立：總統、行政院與立法院制衡",
+    "weightStars": 4,
+    "masteryPercentage": 64,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "CONST",
+    "chapterNo": 7,
+    "title": "司法獨立與法官制度",
+    "weightStars": 3,
+    "masteryPercentage": 84,
+    "isWeakness": false,
+    "status": "MASTERED"
+  },
+  {
+    "subjectId": "CONST",
+    "chapterNo": 8,
+    "title": "憲法訴訟法：法規範憲法審查與裁判審查",
+    "weightStars": 5,
+    "masteryPercentage": 67,
+    "isWeakness": false,
+    "status": "LEARNING"
+  },
+  {
+    "subjectId": "CRIM",
+    "chapterNo": 1,
+    "title": "罪刑法定原則與刑法之適用效力",
+    "weightStars": 3,
+    "masteryPercentage": 95,
+    "isWeakness": false,
+    "status": "MASTERED"
+  },
+  {
+    "subjectId": "CRIM",
+    "chapterNo": 2,
+    "title": "構成要件該當性與因果關係",
+    "weightStars": 5,
+    "masteryPercentage": 86,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "CRIM",
+    "chapterNo": 3,
+    "title": "違法性與阻卻違法事由（正當防衛/緊急避難）",
+    "weightStars": 5,
+    "masteryPercentage": 89,
+    "isWeakness": false,
+    "status": "MASTERED"
+  },
+  {
+    "subjectId": "CRIM",
+    "chapterNo": 4,
+    "title": "未遂犯、中止犯與不能未遂",
+    "weightStars": 5,
+    "masteryPercentage": 63,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "CRIM",
+    "chapterNo": 5,
+    "title": "正犯與共犯（共同正犯/教唆犯/幫助犯）",
+    "weightStars": 5,
+    "masteryPercentage": 72,
+    "isWeakness": false,
+    "status": "NEEDS_REVIEW"
+  },
+  {
+    "subjectId": "CRIM",
+    "chapterNo": 6,
+    "title": "罪數論與競合體系",
+    "weightStars": 4,
+    "masteryPercentage": 68,
+    "isWeakness": false,
+    "status": "LEARNING"
+  },
+  {
+    "subjectId": "CRIM",
+    "chapterNo": 7,
+    "title": "沒收新制（犯罪所得沒收與第三人沒收）",
+    "weightStars": 5,
+    "masteryPercentage": 84,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "CRIM_PROC",
+    "chapterNo": 1,
+    "title": "刑事訴訟基本原則與訴訟主體",
+    "weightStars": 4,
+    "masteryPercentage": 82,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "CRIM_PROC",
+    "chapterNo": 2,
+    "title": "辯護人權限與實質有效辯護",
+    "weightStars": 4,
+    "masteryPercentage": 78,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "CRIM_PROC",
+    "chapterNo": 3,
+    "title": "強制處分：搜索、扣押與令狀原則",
+    "weightStars": 5,
+    "masteryPercentage": 65,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "CRIM_PROC",
+    "chapterNo": 4,
+    "title": "強制處分：逮捕、拘提與羈押審查",
+    "weightStars": 5,
+    "masteryPercentage": 75,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "CRIM_PROC",
+    "chapterNo": 5,
+    "title": "通訊保障及監察法與特殊偵查手段",
+    "weightStars": 3,
+    "masteryPercentage": 80,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "CRIM_PROC",
+    "chapterNo": 6,
+    "title": "證據法總論與嚴格證明法則",
+    "weightStars": 4,
+    "masteryPercentage": 71,
+    "isWeakness": false,
+    "status": "NEEDS_REVIEW"
+  },
+  {
+    "subjectId": "CRIM_PROC",
+    "chapterNo": 7,
+    "title": "傳聞法則與傳聞例外（§159-1~§159-5）",
+    "weightStars": 5,
+    "masteryPercentage": 54,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "CRIM_PROC",
+    "chapterNo": 8,
+    "title": "被告自白任意性與補強證據",
+    "weightStars": 4,
+    "masteryPercentage": 86,
+    "isWeakness": false,
+    "status": "MASTERED"
+  },
+  {
+    "subjectId": "PUB_INT_LAW",
+    "chapterNo": 1,
+    "title": "條約法與國際法源體系（維也納條約法公約）",
+    "weightStars": 5,
+    "masteryPercentage": 72,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "PUB_INT_LAW",
+    "chapterNo": 2,
+    "title": "國際法主體、國家承認與政府繼承",
+    "weightStars": 4,
+    "masteryPercentage": 68,
+    "isWeakness": false,
+    "status": "LEARNING"
+  },
+  {
+    "subjectId": "PUB_INT_LAW",
+    "chapterNo": 3,
+    "title": "國家管轄權與管轄豁免原則（限制豁免主義）",
+    "weightStars": 5,
+    "masteryPercentage": 59,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "PUB_INT_LAW",
+    "chapterNo": 4,
+    "title": "聯合國海洋法公約與領海專屬經濟區",
+    "weightStars": 4,
+    "masteryPercentage": 75,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "PUB_INT_LAW",
+    "chapterNo": 5,
+    "title": "國際爭端和平解決與國際法院（ICJ）管轄權",
+    "weightStars": 4,
+    "masteryPercentage": 65,
+    "isWeakness": false,
+    "status": "NEEDS_REVIEW"
+  },
+  {
+    "subjectId": "PRIV_INT_LAW",
+    "chapterNo": 1,
+    "title": "涉外民事法律適用法總論、定性與反致制度（§6）",
+    "weightStars": 5,
+    "masteryPercentage": 60,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "PRIV_INT_LAW",
+    "chapterNo": 2,
+    "title": "涉外權利能力、行為能力與身分婚姻繼承準據法",
+    "weightStars": 4,
+    "masteryPercentage": 74,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "PRIV_INT_LAW",
+    "chapterNo": 3,
+    "title": "涉外債權法律適用（契約意思自主原則§20與侵權§25）",
+    "weightStars": 5,
+    "masteryPercentage": 68,
+    "isWeakness": false,
+    "status": "LEARNING"
+  },
+  {
+    "subjectId": "PRIV_INT_LAW",
+    "chapterNo": 4,
+    "title": "涉外物權準據法（物之所在地法§38）與外國法適用限制",
+    "weightStars": 4,
+    "masteryPercentage": 77,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "LEGAL_ETH",
+    "chapterNo": 1,
+    "title": "律師利益衝突禁止與忠任義務（律師法§34/倫理§30）",
+    "weightStars": 5,
+    "masteryPercentage": 63,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "LEGAL_ETH",
+    "chapterNo": 2,
+    "title": "律師保密義務之範圍、例外與真實義務衝突",
+    "weightStars": 4,
+    "masteryPercentage": 81,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "LEGAL_ETH",
+    "chapterNo": 3,
+    "title": "司法官轉任律師之旋轉門條款與辦案限制（§37）",
+    "weightStars": 5,
+    "masteryPercentage": 75,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "LEGAL_ETH",
+    "chapterNo": 4,
+    "title": "法官倫理規範與檢察官倫理規範核心界線",
+    "weightStars": 4,
+    "masteryPercentage": 85,
+    "isWeakness": false,
+    "status": "MASTERED"
+  },
+  {
+    "subjectId": "CIVIL",
+    "chapterNo": 1,
+    "title": "權利主體、客體與權利能力/行為能力",
+    "weightStars": 4,
+    "masteryPercentage": 90,
+    "isWeakness": false,
+    "status": "MASTERED"
+  },
+  {
+    "subjectId": "CIVIL",
+    "chapterNo": 2,
+    "title": "法律行為、意思表示瑕疵（通謀/錯誤/詐欺/脅迫）",
+    "weightStars": 5,
+    "masteryPercentage": 78,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "CIVIL",
+    "chapterNo": 3,
+    "title": "代理（無權代理與表見代理）",
+    "weightStars": 5,
+    "masteryPercentage": 60,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "CIVIL",
+    "chapterNo": 4,
+    "title": "消滅時效與除斥期間",
+    "weightStars": 4,
+    "masteryPercentage": 82,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "CIVIL",
+    "chapterNo": 5,
+    "title": "債總：契約之成立、無因管理與不當得利",
+    "weightStars": 5,
+    "masteryPercentage": 74,
+    "isWeakness": false,
+    "status": "NEEDS_REVIEW"
+  },
+  {
+    "subjectId": "CIVIL",
+    "chapterNo": 6,
+    "title": "債總：侵權行為責任構成要件與連帶責任",
+    "weightStars": 5,
+    "masteryPercentage": 79,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "CIVIL",
+    "chapterNo": 7,
+    "title": "債總：債務不履行（給付不能/遲延/不完全給付）",
+    "weightStars": 5,
+    "masteryPercentage": 68,
+    "isWeakness": false,
+    "status": "LEARNING"
+  },
+  {
+    "subjectId": "CIVIL",
+    "chapterNo": 8,
+    "title": "物權：所有權、善意受讓與無權處分",
+    "weightStars": 5,
+    "masteryPercentage": 65,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "CIVIL_PROC",
+    "chapterNo": 1,
+    "title": "民事訴訟之基本原則與審判權管轄",
+    "weightStars": 4,
+    "masteryPercentage": 80,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "CIVIL_PROC",
+    "chapterNo": 2,
+    "title": "當事人能力、當事人適格與訴訟擔當",
+    "weightStars": 5,
+    "masteryPercentage": 70,
+    "isWeakness": false,
+    "status": "NEEDS_REVIEW"
+  },
+  {
+    "subjectId": "CIVIL_PROC",
+    "chapterNo": 3,
+    "title": "共同訴訟之類型判別（必要/普通/固有必要）",
+    "weightStars": 5,
+    "masteryPercentage": 51,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "CIVIL_PROC",
+    "chapterNo": 4,
+    "title": "訴訟標的理論與訴之變更追加",
+    "weightStars": 4,
+    "masteryPercentage": 62,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "CIVIL_PROC",
+    "chapterNo": 5,
+    "title": "既判力之客觀範圍、主觀範圍與爭點效",
+    "weightStars": 5,
+    "masteryPercentage": 55,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "CORP",
+    "chapterNo": 1,
+    "title": "公司設立、法人格與資本充實原則",
+    "weightStars": 4,
+    "masteryPercentage": 85,
+    "isWeakness": false,
+    "status": "MASTERED"
+  },
+  {
+    "subjectId": "CORP",
+    "chapterNo": 2,
+    "title": "股東會召集、決議瑕疵（無效/得撤銷/不成立）",
+    "weightStars": 5,
+    "masteryPercentage": 66,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "CORP",
+    "chapterNo": 3,
+    "title": "董事會權限、董事忠實義務與注意義務（§23）",
+    "weightStars": 5,
+    "masteryPercentage": 77,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "CORP",
+    "chapterNo": 4,
+    "title": "監察人權限與審計委員會獨立董事制度",
+    "weightStars": 4,
+    "masteryPercentage": 73,
+    "isWeakness": false,
+    "status": "LEARNING"
+  },
+  {
+    "subjectId": "CORP",
+    "chapterNo": 5,
+    "title": "公司發行新股、特別股與員工獎酬工具",
+    "weightStars": 4,
+    "masteryPercentage": 79,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "CORP",
+    "chapterNo": 6,
+    "title": "公司併購、解散清算與公司重整法制",
+    "weightStars": 3,
+    "masteryPercentage": 82,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "INSUR",
+    "chapterNo": 1,
+    "title": "據實告知說明義務與因果關係抗辯（保險法§64）",
+    "weightStars": 5,
+    "masteryPercentage": 64,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "INSUR",
+    "chapterNo": 2,
+    "title": "保險利益原則與定型化契約條款顯失公平（§54-1）",
+    "weightStars": 4,
+    "masteryPercentage": 78,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "INSUR",
+    "chapterNo": 3,
+    "title": "複保險之善意分擔與惡意無效（保險法§36~§38）",
+    "weightStars": 5,
+    "masteryPercentage": 58,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "INSUR",
+    "chapterNo": 4,
+    "title": "保險人代位權之行使要件與範圍限制（保險法§53）",
+    "weightStars": 5,
+    "masteryPercentage": 70,
+    "isWeakness": false,
+    "status": "NEEDS_REVIEW"
+  },
+  {
+    "subjectId": "INSUR",
+    "chapterNo": 5,
+    "title": "人身保險之特質：死亡保險被保險人書面同意與受益人指定",
+    "weightStars": 4,
+    "masteryPercentage": 83,
+    "isWeakness": false,
+    "status": "MASTERED"
+  },
+  {
+    "subjectId": "NEG_INST",
+    "chapterNo": 1,
+    "title": "票據行為無因性與票據抗辯之限制（票據法§13）",
+    "weightStars": 5,
+    "masteryPercentage": 62,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "NEG_INST",
+    "chapterNo": 2,
+    "title": "票據之偽造、變造與在真正簽名人之責任（§15/§16）",
+    "weightStars": 5,
+    "masteryPercentage": 57,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "NEG_INST",
+    "chapterNo": 3,
+    "title": "背書連續之實質與形式審查、善意取得票據（§14/§37）",
+    "weightStars": 4,
+    "masteryPercentage": 75,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "NEG_INST",
+    "chapterNo": 4,
+    "title": "發票人之擔保承兌與付款責任、保證人責任",
+    "weightStars": 4,
+    "masteryPercentage": 80,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "NEG_INST",
+    "chapterNo": 5,
+    "title": "追索權之行使要件、拒絕證書與消滅時效（§22）",
+    "weightStars": 4,
+    "masteryPercentage": 71,
+    "isWeakness": false,
+    "status": "NEEDS_REVIEW"
+  },
+  {
+    "subjectId": "COMP_EXEC",
+    "chapterNo": 1,
+    "title": "執行名義之法定類型與執行力主觀客觀範圍（強執§4）",
+    "weightStars": 4,
+    "masteryPercentage": 79,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "COMP_EXEC",
+    "chapterNo": 2,
+    "title": "金錢債權執行：薪資帳戶扣押限制與責任財產調查（§115/§122）",
+    "weightStars": 5,
+    "masteryPercentage": 68,
+    "isWeakness": false,
+    "status": "LEARNING"
+  },
+  {
+    "subjectId": "COMP_EXEC",
+    "chapterNo": 3,
+    "title": "動產與不動產強制執行：查封效力、拍賣點交與承受程序",
+    "weightStars": 4,
+    "masteryPercentage": 74,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "COMP_EXEC",
+    "chapterNo": 4,
+    "title": "債務人異議之訴（強執§14 排除執行力之要件與時點）",
+    "weightStars": 5,
+    "masteryPercentage": 54,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "COMP_EXEC",
+    "chapterNo": 5,
+    "title": "第三人異議之訴（強執§15 排除標的物執行之權利實質）",
+    "weightStars": 5,
+    "masteryPercentage": 58,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "SEC_REG",
+    "chapterNo": 1,
+    "title": "內線交易禁止：重大消息明確時點與18小時沉澱期（§157-1）",
+    "weightStars": 5,
+    "masteryPercentage": 52,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "SEC_REG",
+    "chapterNo": 2,
+    "title": "短線交易歸入權：董監事經理人6個月買賣差價計算（§157）",
+    "weightStars": 5,
+    "masteryPercentage": 66,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "SEC_REG",
+    "chapterNo": 3,
+    "title": "公開說明書與財務報告虛偽隱匿之民事賠償責任（§20/§32）",
+    "weightStars": 4,
+    "masteryPercentage": 71,
+    "isWeakness": false,
+    "status": "NEEDS_REVIEW"
+  },
+  {
+    "subjectId": "SEC_REG",
+    "chapterNo": 4,
+    "title": "有價證券募集、發行與私募法制及轉讓限制（§43-6/§43-8）",
+    "weightStars": 4,
+    "masteryPercentage": 78,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "SEC_REG",
+    "chapterNo": 5,
+    "title": "操縱市場行為（連續買賣/相對成交）與非常規交易罪（§171）",
+    "weightStars": 4,
+    "masteryPercentage": 80,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "LEGAL_ENG",
+    "chapterNo": 1,
+    "title": "英美憲法與人權詞彙（Due Process, Equal Protection, Scrutiny）",
+    "weightStars": 4,
+    "masteryPercentage": 85,
+    "isWeakness": false,
+    "status": "MASTERED"
+  },
+  {
+    "subjectId": "LEGAL_ENG",
+    "chapterNo": 2,
+    "title": "刑事訴訟證據排除法制（Exclusionary Rule, Plain View, Warrant）",
+    "weightStars": 5,
+    "masteryPercentage": 65,
+    "isWeakness": true,
+    "status": "WEAKNESS"
+  },
+  {
+    "subjectId": "LEGAL_ENG",
+    "chapterNo": 3,
+    "title": "英美契約與侵權法專用詞彙（Consideration, Strict Liability, Tort）",
+    "weightStars": 4,
+    "masteryPercentage": 73,
+    "isWeakness": false,
+    "status": "COMPLETED"
+  },
+  {
+    "subjectId": "LEGAL_ENG",
+    "chapterNo": 4,
+    "title": "常見拉丁法諺與司法審判用語（Stare Decisis, Habeas Corpus, Mens Rea）",
+    "weightStars": 4,
+    "masteryPercentage": 82,
+    "isWeakness": false,
+    "status": "MASTERED"
+  }
 ];
 
 export const CHAPTER_TEXTBOOKS: Record<string, ChapterTextbook> = {
@@ -1814,30 +2569,30 @@ export const SAMPLE_QUESTIONS: Question[] = [
     "optionExplanations": {
       "A": {
         "isCorrect": false,
-        "reason": "依憲法訴訟法第 59 條第 1 項規定，人民就其依法定程序用盡審級救濟之確定終局裁判，認有牴觸憲法者，得聲請憲法法庭為宣告違憲之判決。此即裁判憲法審查新制。",
-        "trapType": "混淆憲法訴訟法新制與大法官審理法舊制"
+        "reason": "依憲法訴訟法第 59 條第 1 項規定，人民就確定終局裁判認有牴觸憲法者，得聲請憲法法庭為宣告違憲之判決（裁判憲法審查新制）。",
+        "trapType": "混淆憲法訴訟法新制與舊制"
       },
       "B": {
         "isCorrect": true,
-        "reason": "依憲法訴訟法第 62 條第 1 項規定，憲法法庭認人民之聲請有理由者，應於判決主文宣告該確定終局裁判違憲，並廢棄該裁判，發回管轄法院。完全符合法條明文。",
+        "reason": "依憲法訴訟法第 62 條第 1 項規定，憲法法庭認人民聲請有理由者，應宣告該裁判違憲，並廢棄該裁判，發回管轄法院。",
         "trapType": "正解無陷阱"
       },
       "C": {
         "isCorrect": false,
-        "reason": "依憲法訴訟法第 64 條第 1 項，法規範宣告違憲時，聲請人得依各該訴訟法規定提起再審之訴或聲請非常上訴，並非確定終局裁判當然直接失效。",
-        "trapType": "誤認判決當然自動失其效力而免除再審程序"
+        "reason": "依憲法訴訟法第 64 條第 1 項，法規範違憲時，聲請人得依各該訴訟法規定提起再審之訴或非常上訴，非當然直接失效。",
+        "trapType": "誤認裁判當然自動失效"
       },
       "D": {
         "isCorrect": false,
-        "reason": "裁判憲法審查係依憲法訴訟法廢棄並發回管轄法院重審，並非抽象溯及當然無效。",
-        "trapType": "混淆發回管轄法院與當然自始無效之法律效果"
+        "reason": "裁判審查係廢棄發回重審，非抽象溯及無效。",
+        "trapType": "法律效果混淆"
       }
     },
     "tags": [
       "#憲法訴訟法",
       "#裁判憲法審查",
       "#廢棄發回",
-      "#113最新考點"
+      "#113真題"
     ],
     "difficulty": "HARD",
     "relatedLaws": [
@@ -1884,7 +2639,7 @@ export const SAMPLE_QUESTIONS: Question[] = [
       },
       {
         "label": "C",
-        "text": "如差別待遇所涉及者為非憲法列舉之重要基本權利（如工作權），原則上應適用中度審查基準（實質關聯性）"
+        "text": "如差別待遇所涉及者為重要基本權利限制，原則上應適用中度審查基準（追求實質重要公益且手段具實質關聯）"
       },
       {
         "label": "D",
@@ -1895,30 +2650,30 @@ export const SAMPLE_QUESTIONS: Question[] = [
     "optionExplanations": {
       "A": {
         "isCorrect": false,
-        "reason": "以性別等難以改變之個人特徵為分類標準時，大法官原則上採「中度或嚴格審查基準」（釋字第365號、第748號），非合理審查基準。",
+        "reason": "以性別等難以改變之特徵為分類標準時，大法官原則上採「中度或嚴格審查基準」（釋字第365號、第748號）。",
         "trapType": "將性別差別待遇審查基準誤降為寬鬆審查"
       },
       "B": {
         "isCorrect": false,
-        "reason": "憲法第7條平等權保障係指「實質平等」與「合目的性之差別待遇」，禁止恣意，非絕對齊頭平等。",
+        "reason": "憲法第7條保障實質平等與合目的性差別待遇，禁止恣意，非齊頭平等。",
         "trapType": "誤將實質平等當作齊頭平等"
       },
       "C": {
         "isCorrect": true,
-        "reason": "依司法院釋字第584號、第728號等意旨，涉及重要基本權利限制之差別待遇，應審查立法目的與手段間是否具有實質關聯性。",
+        "reason": "依司法院釋字第584號、第728號等意旨，涉及重要基本權利限制之差別待遇，應審查立法目的與手段間是否具實質關聯性。",
         "trapType": "正解無陷阱"
       },
       "D": {
         "isCorrect": false,
-        "reason": "基於不可變特徵（種族、性別、出生）之分類，審查密度高於可變特徵（職業、學歷）。",
-        "trapType": "顛倒可變與不可變特徵之審查密度"
+        "reason": "不可變特徵（種族、性別、出生）審查密度高於可變特徵（職業、資產）。",
+        "trapType": "顛倒審查密度"
       }
     },
     "tags": [
       "#憲法",
       "#平等原則",
       "#審查基準",
-      "#實質關聯性"
+      "#112真題"
     ],
     "difficulty": "MEDIUM",
     "relatedLaws": [
@@ -1931,7 +2686,7 @@ export const SAMPLE_QUESTIONS: Question[] = [
       {
         "court": "司法院大法官釋字",
         "caseNo": "釋字第 748 號解釋",
-        "summary": "婚姻自由平等保護與同性婚姻。",
+        "summary": "婚姻自由平等保護。",
         "isVerified": true
       }
     ],
@@ -1941,6 +2696,84 @@ export const SAMPLE_QUESTIONS: Question[] = [
     "verifiedDate": "2024-05-01",
     "sourceCitation": "考選部 112 年專技高考律師第一試 綜合法學(一)第4題",
     "officialCorrectRate": 67.2
+  },
+  {
+    "id": "111-BAR-CONST-03",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "CONST",
+    "chapterId": "CONST-3",
+    "chapterNo": 3,
+    "chapterTitle": "人身自由與正當法律程序（釋字384/588）",
+    "prompt": "依司法院釋字第 384 號及第 588 號解釋，關於憲法第 8 條「人身自由」與「法官保留原則」，下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "行政機關為保全公法上金錢給付義務之履行，得由行政執行官自行決定拘提管收債務人，毋須法院裁定"
+      },
+      {
+        "label": "B",
+        "text": "憲法第 8 條第 1 項所稱之「法院」，包括行政機關之執法人員在內"
+      },
+      {
+        "label": "C",
+        "text": "凡限制人民身體自由之處置，不問其名義為何，均應踐行正當法律程序，拘束人身自由之處置原則上應由法院審查決定"
+      },
+      {
+        "label": "D",
+        "text": "外國人入境管制或驅逐出境之暫時收容處分，不屬於憲法第 8 條人身自由保障之範疇"
+      }
+    ],
+    "correctAnswer": "C",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "釋字第 588 號明定，管收係拘束人身自由之強制處分，必須踐行法官保留，由法院裁定，行政機關無權自行決定。",
+        "trapType": "否定行政執行之法官保留"
+      },
+      "B": {
+        "isCorrect": false,
+        "reason": "憲法第8條所稱「法院」專指憲法第77條有審判權之法官組成之獨立司法機關，不包括行政機關。",
+        "trapType": "擴大法院主體範圍"
+      },
+      "C": {
+        "isCorrect": true,
+        "reason": "釋字第384號、第588號確立：限制人身自由不問名義（管收、收容、感訓），均須受實質正當法律程序保障並採法官保留。",
+        "trapType": "正解無陷阱"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "釋字第 708 號、第 710 號明定外國人或大陸地區人民之人身自由收容亦受憲法第8條實質保障。",
+        "trapType": "排除外國人人身自由保障"
+      }
+    },
+    "tags": [
+      "#憲法",
+      "#人身自由",
+      "#法官保留",
+      "#釋字第588號",
+      "#111真題"
+    ],
+    "difficulty": "HARD",
+    "relatedLaws": [
+      {
+        "lawName": "中華民國憲法",
+        "articleNo": "第 8 條"
+      }
+    ],
+    "relatedCases": [
+      {
+        "court": "司法院大法官釋字",
+        "caseNo": "釋字第 588 號解釋",
+        "summary": "行政執行管收採法官保留。",
+        "isVerified": true
+      }
+    ],
+    "examYear": "111",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 6,
+    "verifiedDate": "2024-05-01",
+    "sourceCitation": "考選部 111 年專技高考律師第一試 綜合法學(一)第6題",
+    "officialCorrectRate": 62.4
   },
   {
     "id": "113-BAR-ADMIN-01",
@@ -2091,6 +2924,83 @@ export const SAMPLE_QUESTIONS: Question[] = [
     "officialCorrectRate": 68.4
   },
   {
+    "id": "111-BAR-ADMIN-03",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "ADMIN",
+    "chapterId": "ADMIN-1",
+    "chapterNo": 1,
+    "chapterTitle": "行政法基本原理原則與法源",
+    "prompt": "依司法院釋字第 443 號解釋所建構之「層級化法律保留體系」，下列關於公權力干預限制之敘述，何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "剝奪人民生命或限制人民人身自由之刑罰事項，得以法律明確授權之法規命令定之"
+      },
+      {
+        "label": "B",
+        "text": "給付行政措施因屬授益性質，全面無須受法律保留原則之拘束"
+      },
+      {
+        "label": "C",
+        "text": "涉及公共利益之重大給付行政事項（如全民健保投保資格限制），仍須有法律或法律具體明確授權之命令為依據"
+      },
+      {
+        "label": "D",
+        "text": "行政機關執行法律之細節性、技術性次要事項，亦必須有法律個別具體明確授權始得訂定"
+      }
+    ],
+    "correctAnswer": "C",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "剝奪生命或人身自由之刑罰屬於「絕對法律保留（國會保留）」，嚴格禁止授權行政命令訂定。",
+        "trapType": "誤將絕對法律保留事項交由命令授權"
+      },
+      "B": {
+        "isCorrect": false,
+        "reason": "給付行政如涉及重大公益或重要基本權，仍屬相對法律保留，非全面免除法律保留。",
+        "trapType": "誤認給付行政全面不受法律保留拘束"
+      },
+      "C": {
+        "isCorrect": true,
+        "reason": "釋字第443號理由書明定：重大給付行政事項涉及重要權利或重大公益者，仍屬相對法律保留，須有法律或具體授權。",
+        "trapType": "正解無陷阱"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "執行細節性、技術性事項屬於「非法律保留」，得由主管機關本於職權發布行政規則或命令，毋須具體法律授權。",
+        "trapType": "混淆技術細節事項之非法律保留"
+      }
+    },
+    "tags": [
+      "#行政法",
+      "#層級化法律保留",
+      "#釋字第443號",
+      "#相對法律保留"
+    ],
+    "difficulty": "HARD",
+    "relatedLaws": [
+      {
+        "lawName": "中央法規標準法",
+        "articleNo": "第 5 條"
+      }
+    ],
+    "relatedCases": [
+      {
+        "court": "司法院大法官釋字",
+        "caseNo": "釋字第 443 號解釋",
+        "summary": "役男出境管制與層級化法律保留體系。",
+        "isVerified": true
+      }
+    ],
+    "examYear": "111",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 15,
+    "verifiedDate": "2024-05-01",
+    "sourceCitation": "考選部 111 年專技高考律師第一試 綜合法學(一)第15題",
+    "officialCorrectRate": 59.3
+  },
+  {
     "id": "113-BAR-CRIM-01",
     "sourceType": "OFFICIAL_EXAM",
     "subjectId": "CRIM",
@@ -2120,7 +3030,7 @@ export const SAMPLE_QUESTIONS: Question[] = [
     "optionExplanations": {
       "A": {
         "isCorrect": false,
-        "reason": "刑法沒收新制確立沒收為「獨立法律效果」（準不當得利），不以行為人有責任能力或成立犯罪論罪科刑為絕對前提（單獨宣告沒收，刑§40 III）。",
+        "reason": "刑法沒收新制確立沒收為「獨立法律效果」（準不當得利），不以行為人成立犯罪論罪科刑為絕對前提。",
         "trapType": "誤將新制獨立沒收當作附屬從刑"
       },
       "B": {
@@ -2130,12 +3040,12 @@ export const SAMPLE_QUESTIONS: Question[] = [
       },
       "C": {
         "isCorrect": false,
-        "reason": "依刑法第 38 條之 1 第 6 項，不能沒收或不宜執行沒收時，「追徵其價額」。",
+        "reason": "依刑法第 38 條之 1 第 6 項，不能沒收時「追徵其價額」。",
         "trapType": "法條用詞混淆"
       },
       "D": {
         "isCorrect": false,
-        "reason": "犯罪所得計算採「總額原則」，行為人實施犯罪之成本不得自所得中扣除（最高法院108年台上字第3587號判決）。",
+        "reason": "犯罪所得計算採「總額原則」，行為人實施犯罪之成本不得扣除。",
         "trapType": "誤將總額原則當成淨額原則"
       }
     },
@@ -2168,85 +3078,75 @@ export const SAMPLE_QUESTIONS: Question[] = [
     "officialCorrectRate": 59.8
   },
   {
-    "id": "109-BAR-CRIM-02",
+    "id": "112-BAR-CRIM-02",
     "sourceType": "OFFICIAL_EXAM",
     "subjectId": "CRIM",
-    "chapterId": "CRIM-5",
-    "chapterNo": 5,
-    "chapterTitle": "正犯與共犯（共同正犯/教唆犯/幫助犯）",
-    "prompt": "甲、乙、丙三人共同基於意圖為自己不法所有之犯意聯絡，推由甲、乙二人侵入他人住宅行竊，丙則在屋外把風接應。下列敘述何者正確？",
+    "chapterId": "CRIM-3",
+    "chapterNo": 3,
+    "chapterTitle": "違法性與阻卻違法事由（正當防衛/緊急避難）",
+    "prompt": "關於刑法第 23 條「正當防衛」之阻卻違法要件，下列敘述何者正確？",
     "options": [
       {
         "label": "A",
-        "text": "丙僅在屋外把風，未實行刑法加重竊盜罪構成要件行為，僅能論以竊盜罪之幫助犯"
+        "text": "正當防衛所對抗之侵害，必須是「現在不法」之侵害，若侵害尚未發生或已經過去，不成立正當防衛"
       },
       {
         "label": "B",
-        "text": "丙與甲、乙有共同之犯意聯絡，且在場把風分擔重要職責，依刑法第 28 條規定，丙仍成立加重竊盜罪之共同正犯"
+        "text": "防衛行為縱使顯然逾越必要程度，亦一律阻卻違法而不罰"
       },
       {
         "label": "C",
-        "text": "若甲於屋內擅自臨時起意放火燒燬該住宅，丙亦當然成立放火罪之共同正犯"
+        "text": "面對動物（如無人看管之瘋狗）之純粹自然突襲，亦得主張對該動物行使正當防衛"
       },
       {
         "label": "D",
-        "text": "共同正犯之成立，以所有參與人均必須進入現場實施構成要件行為為必要"
+        "text": "正當防衛僅限於防衛自己之權利，不得為防衛他人權利而為防衛行為"
       }
     ],
-    "correctAnswer": "B",
+    "correctAnswer": "A",
     "optionExplanations": {
       "A": {
-        "isCorrect": false,
-        "reason": "司法院釋字第 109 號解釋：以自己犯罪之意思在現場把風者為共同正犯，非幫助犯。",
-        "trapType": "將把風共同正犯誤當幫助犯"
+        "isCorrect": true,
+        "reason": "刑法第 23 條前段明定：「對於現在不法之侵害，出自防衛自己或他人權利之行為，不罰。」侵害已過去為事後防衛，尚未發生為事前防衛，皆非現在侵害。",
+        "trapType": "正解無陷阱"
       },
       "B": {
-        "isCorrect": true,
-        "reason": "刑法第28條與釋字第109號，以自己犯罪之意思參與犯意聯絡並分擔把風者為共同正犯。",
-        "trapType": "正解無陷阱"
+        "isCorrect": false,
+        "reason": "刑法第 23 條但書規定，防衛過當者「得減輕或免除其刑」，並不阻卻違法。",
+        "trapType": "誤將防衛過當視為完全阻卻違法"
       },
       "C": {
         "isCorrect": false,
-        "reason": "甲臨時起意放火屬共犯過剩，丙無犯意聯絡不負放火共同正犯責任。",
-        "trapType": "忽略共犯過剩原則"
+        "reason": "動物非權利義務主體，單純動物突襲非「人之不法侵害」，應主張刑法第24條緊急避難，非正當防衛。",
+        "trapType": "正當防衛與緊急避難客體混淆"
       },
       "D": {
         "isCorrect": false,
-        "reason": "共同正犯不以全員實行全部構成要件行為為必要。",
-        "trapType": "限制共同正犯要件"
+        "reason": "刑法第23條明定防衛「自己或他人權利」均可，包括緊急救助他人。",
+        "trapType": "限制正當防衛不得防衛他人"
       }
     },
     "tags": [
-      "#刑法總則",
-      "#共同正犯",
-      "#把風",
-      "#釋字第109號"
+      "#刑法",
+      "#正當防衛",
+      "#現在不法侵害",
+      "#防衛過當",
+      "#刑法§23"
     ],
     "difficulty": "MEDIUM",
     "relatedLaws": [
       {
         "lawName": "刑法",
-        "articleNo": "第 28 條"
-      },
-      {
-        "lawName": "刑法",
-        "articleNo": "第 321 條"
+        "articleNo": "第 23 條"
       }
     ],
-    "relatedCases": [
-      {
-        "court": "司法院大法官釋字",
-        "caseNo": "釋字第 109 號解釋",
-        "summary": "以自己犯罪意思把風為共同正犯。",
-        "isVerified": true
-      }
-    ],
-    "examYear": "109",
+    "relatedCases": [],
+    "examYear": "112",
     "examSession": "專技高考律師第一試",
-    "questionNo": 15,
+    "questionNo": 14,
     "verifiedDate": "2024-05-01",
-    "sourceCitation": "考選部 109 年專技高考律師第一試 綜合法學(一)第15題",
-    "officialCorrectRate": 76.5
+    "sourceCitation": "考選部 112 年專技高考律師第一試 綜合法學(一)第14題",
+    "officialCorrectRate": 75.1
   },
   {
     "id": "112-BAR-CRIMPROC-01",
@@ -2327,12 +3227,87 @@ export const SAMPLE_QUESTIONS: Question[] = [
     "officialCorrectRate": 51.2
   },
   {
+    "id": "113-BAR-CRIMPROC-02",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "CRIM_PROC",
+    "chapterId": "CRIM_PROC-3",
+    "chapterNo": 3,
+    "chapterTitle": "強制處分：搜索、扣押與令狀原則",
+    "prompt": "關於刑事訴訟法第 130 條司法警察官或司法警察之「附帶搜索」，下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "附帶搜索之範圍，包括受逮捕人之身體、隨身攜帶之物件、所使用之交通工具及其整棟住宅"
+      },
+      {
+        "label": "B",
+        "text": "附帶搜索之合法前提，必須以「合法拘提、逮捕或羈押」為核心基礎"
+      },
+      {
+        "label": "C",
+        "text": "實施附帶搜索後，司法警察必須在搜索結束後三日內向該管法院陳報，否則扣押物當然無效"
+      },
+      {
+        "label": "D",
+        "text": "附帶搜索之目的在於全面搜查犯罪證據，縱與防護執法人員安全無關亦得自由擴張範圍"
+      }
+    ],
+    "correctAnswer": "B",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "依刑事訴訟法第 130 條，附帶搜索之範圍限於立即可觸及之場所，不包括整棟住宅。",
+        "trapType": "過度擴大附帶搜索之空間範圍"
+      },
+      "B": {
+        "isCorrect": true,
+        "reason": "刑事訴訟法第 130 條明定：「司法警察官或司法警察逮捕被告、犯罪嫌疑人或執行拘提、羈押時，雖無搜索票，得逕行搜索...」必須以合法逮捕拘提為前提。",
+        "trapType": "正解無陷阱"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "刑訴第 130 條附帶搜索「無須」事後向法院陳報（第131條緊急搜索始須3日內陳報）。",
+        "trapType": "混淆附帶搜索與緊急搜索之陳報要件"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "附帶搜索之目的在於防止受逮捕人湮滅隨身證據及保護執法人員自身安全。",
+        "trapType": "目的逾越"
+      }
+    },
+    "tags": [
+      "#刑事訴訟法",
+      "#附帶搜索",
+      "#令狀例外",
+      "#刑訴§130",
+      "#113真題"
+    ],
+    "difficulty": "MEDIUM",
+    "relatedLaws": [
+      {
+        "lawName": "刑事訴訟法",
+        "articleNo": "第 130 條"
+      },
+      {
+        "lawName": "刑事訴訟法",
+        "articleNo": "第 131 條"
+      }
+    ],
+    "relatedCases": [],
+    "examYear": "113",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 30,
+    "verifiedDate": "2024-08-10",
+    "sourceCitation": "考選部 113 年專技高考律師第一試 綜合法學(一)第30題",
+    "officialCorrectRate": 68.9
+  },
+  {
     "id": "113-BAR-INTPUB-01",
     "sourceType": "OFFICIAL_EXAM",
     "subjectId": "PUB_INT_LAW",
     "chapterId": "PUB_INT_LAW-1",
     "chapterNo": 1,
-    "chapterTitle": "條約法與國際法源體系",
+    "chapterTitle": "條約法與國際法源體系（維也納條約法公約）",
     "prompt": "依維也納條約法公約（VCLT）之規定，關於國家對多邊條約提出「保留（Reservation）」，下列敘述何者正確？",
     "options": [
       {
@@ -2397,12 +3372,83 @@ export const SAMPLE_QUESTIONS: Question[] = [
     "officialCorrectRate": 61.5
   },
   {
+    "id": "112-BAR-INTPUB-02",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "PUB_INT_LAW",
+    "chapterId": "PUB_INT_LAW-3",
+    "chapterNo": 3,
+    "chapterTitle": "國家管轄權與管轄豁免原則（限制豁免主義）",
+    "prompt": "關於現代國際法上之「國家管轄豁免（State Immunity）」原則，下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "現代國際法全面採行「絕對豁免主義」，外國國家在內國法院之一切行為均享有絕對訴訟豁免"
+      },
+      {
+        "label": "B",
+        "text": "現代國際法普遍採行「限制豁免主義」，外國國家從事私法商業交易行為（Acta de jure gestionis）時，不享有國家管轄豁免"
+      },
+      {
+        "label": "C",
+        "text": "外國國家元首在位期間，縱從事私人商業買賣，內國法院亦得隨時發動民事強制執行查封其國有使館財產"
+      },
+      {
+        "label": "D",
+        "text": "國家一旦在訴訟中放棄管轄豁免，即視為當然同時放棄後續民事判決之強制執行豁免"
+      }
+    ],
+    "correctAnswer": "B",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "現代國際法已由絕對豁免走向「限制豁免主義」（Restrictive Immunity）。",
+        "trapType": "仍誤守舊時代絕對豁免"
+      },
+      "B": {
+        "isCorrect": true,
+        "reason": "依聯合國國家及其財產管轄豁免公約，區分統治權行為（享豁免）與商業私法行為（不享管轄豁免）。",
+        "trapType": "正解無陷阱"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "外交使館財產具不可侵犯性（維也納外交關係公約第22條），不得強制執行。",
+        "trapType": "侵犯外交使館財產豁免"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "審判管轄豁免之放棄不等於「強制執行豁免」之放棄，執行豁免須另為明示放棄。",
+        "trapType": "混淆審判豁免與執行豁免之分離原則"
+      }
+    },
+    "tags": [
+      "#國際公法",
+      "#國家豁免",
+      "#限制豁免主義",
+      "#商業行為",
+      "#112真題"
+    ],
+    "difficulty": "HARD",
+    "relatedLaws": [
+      {
+        "lawName": "聯合國國家及其財產管轄豁免公約",
+        "articleNo": "第 5 條至第 10 條（商業行為例外）"
+      }
+    ],
+    "relatedCases": [],
+    "examYear": "112",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 43,
+    "verifiedDate": "2024-05-01",
+    "sourceCitation": "考選部 112 年專技高考律師第一試 綜合法學(一)第43題",
+    "officialCorrectRate": 57.8
+  },
+  {
     "id": "112-BAR-INTPRI-01",
     "sourceType": "OFFICIAL_EXAM",
     "subjectId": "PRIV_INT_LAW",
     "chapterId": "PRIV_INT_LAW-1",
     "chapterNo": 1,
-    "chapterTitle": "涉外民事法律適用總論與反致制度",
+    "chapterTitle": "涉外民事法律適用法總論、定性與反致制度（§6）",
     "prompt": "關於我國「涉外民事法律適用法」第 6 條所規定之「反致（Renvoi）」制度，下列敘述何者正確？",
     "options": [
       {
@@ -2467,12 +3513,87 @@ export const SAMPLE_QUESTIONS: Question[] = [
     "officialCorrectRate": 53.4
   },
   {
+    "id": "113-BAR-INTPRI-02",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "PRIV_INT_LAW",
+    "chapterId": "PRIV_INT_LAW-3",
+    "chapterNo": 3,
+    "chapterTitle": "涉外債權法律適用（契約意思自主原則§20與侵權§25）",
+    "prompt": "關於涉外契約與涉外侵權行為之準據法決定，依我國涉外民事法律適用法，下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "涉外契約當事人不得合意選擇準據法，一律強制適用契約締結地法"
+      },
+      {
+        "label": "B",
+        "text": "涉外法律行為所生之債（契約），依當事人意思定其應適用之法律；當事人無明示之意思時，適用關係最切之法律"
+      },
+      {
+        "label": "C",
+        "text": "涉外侵權行為所生之債，一律僅能適用侵權行為人本國法"
+      },
+      {
+        "label": "D",
+        "text": "外國法之適用，縱有背於中華民國公共秩序或善良風俗，我國法院亦絕對不得排除其適用"
+      }
+    ],
+    "correctAnswer": "B",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "涉外法第 20 條確立「意思自主原則」，當事人得合意選擇準據法。",
+        "trapType": "否定契約意思自主原則"
+      },
+      "B": {
+        "isCorrect": true,
+        "reason": "涉外民事法律適用法第 20 條第 1 項及第 2 項明定：依當事人意思定其應適用之法律；無意思時適用關係最切之法律。",
+        "trapType": "正解無陷阱"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "涉外法第 25 條規定侵權原則適用「侵權行為地法」，非行為人本國法。",
+        "trapType": "侵權準據法錯誤"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "涉外法第 8 條設有「公序良俗條款」，違背公序良俗之外國法不予適用。",
+        "trapType": "忽略公序良俗防衛條款"
+      }
+    },
+    "tags": [
+      "#國際私法",
+      "#契約準據法",
+      "#意思自主",
+      "#涉外法§20",
+      "#113真題"
+    ],
+    "difficulty": "MEDIUM",
+    "relatedLaws": [
+      {
+        "lawName": "涉外民事法律適用法",
+        "articleNo": "第 20 條"
+      },
+      {
+        "lawName": "涉外民事法律適用法",
+        "articleNo": "第 8 條"
+      }
+    ],
+    "relatedCases": [],
+    "examYear": "113",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 47,
+    "verifiedDate": "2024-08-10",
+    "sourceCitation": "考選部 113 年專技高考律師第一試 綜合法學(一)第47題",
+    "officialCorrectRate": 72.8
+  },
+  {
     "id": "113-BAR-LETH-01",
     "sourceType": "OFFICIAL_EXAM",
     "subjectId": "LEGAL_ETH",
     "chapterId": "LEGAL_ETH-1",
     "chapterNo": 1,
-    "chapterTitle": "律師利益衝突禁止與忠任義務",
+    "chapterTitle": "律師利益衝突禁止與忠任義務（律師法§34/倫理§30）",
     "prompt": "依律師法與律師倫理規範，關於律師利益衝突禁止之規定，下列敘述何者正確？",
     "options": [
       {
@@ -2846,7 +3967,7 @@ export const SAMPLE_QUESTIONS: Question[] = [
     "subjectId": "INSUR",
     "chapterId": "INSUR-1",
     "chapterNo": 1,
-    "chapterTitle": "據實告知義務與保險契約效力（保險法§64）",
+    "chapterTitle": "據實告知說明義務與因果關係抗辯（保險法§64）",
     "prompt": "關於保險法第 64 條要保人之「據實說明義務」，下列敘述何者正確？",
     "options": [
       {
@@ -2915,12 +4036,98 @@ export const SAMPLE_QUESTIONS: Question[] = [
     "officialCorrectRate": 69.1
   },
   {
+    "id": "112-BAR-INSUR-02",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "INSUR",
+    "chapterId": "INSUR-3",
+    "chapterNo": 3,
+    "chapterTitle": "複保險之善意分擔與惡意無效（保險法§36~§38）",
+    "prompt": "關於保險法第 36 條至第 38 條之「複保險」規定與實務見解，下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "複保險之規範適用於一切保險契約，包括人身保險（人壽保險）與財產保險"
+      },
+      {
+        "label": "B",
+        "text": "要保人意圖不當得利而為複保險者（惡意複保險），其契約全部無效"
+      },
+      {
+        "label": "C",
+        "text": "善意複保險之各保險人，應按其約定保險金額全額分別賠付，不得比例分擔"
+      },
+      {
+        "label": "D",
+        "text": "要保人未向各保險人為複保險之通知者，縱出於善意，其契約亦一律當然絕對無效"
+      }
+    ],
+    "correctAnswer": "B",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "司法院大法官釋字第 576 號解釋確立：人身保險（如人壽保險）因人的生命身體價值無價，不適用保險法關於複保險通知義務與惡意無效之規定。",
+        "trapType": "誤將財產保險複保險擴張至人身保險"
+      },
+      "B": {
+        "isCorrect": true,
+        "reason": "保險法第 37 條明定：「要保人故意不為前條之通知，或意圖不當得利而為複保險者，其契約無效。」",
+        "trapType": "正解無陷阱"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "依保險法第 38 條，善意複保險各保險人負「比例分擔」責任，賠償總額不得超過保險標的價值。",
+        "trapType": "誤解善意複保險比例分擔機制"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "依保險法第38條，善意未通知或善意複保險者契約有效，僅依比例分擔。",
+        "trapType": "誤將善意未通知一律論為無效"
+      }
+    },
+    "tags": [
+      "#保險法",
+      "#複保險",
+      "#惡意無效",
+      "#釋字第576號",
+      "#112真題"
+    ],
+    "difficulty": "HARD",
+    "relatedLaws": [
+      {
+        "lawName": "保險法",
+        "articleNo": "第 36 條"
+      },
+      {
+        "lawName": "保險法",
+        "articleNo": "第 37 條"
+      },
+      {
+        "lawName": "保險法",
+        "articleNo": "第 38 條"
+      }
+    ],
+    "relatedCases": [
+      {
+        "court": "司法院大法官釋字",
+        "caseNo": "釋字第 576 號解釋",
+        "summary": "人身保險不適用複保險無效規定。",
+        "isVerified": true
+      }
+    ],
+    "examYear": "112",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 39,
+    "verifiedDate": "2024-05-01",
+    "sourceCitation": "考選部 112 年專技高考律師第一試 綜合法學(二)第39題",
+    "officialCorrectRate": 56.7
+  },
+  {
     "id": "112-BAR-NEGINST-01",
     "sourceType": "OFFICIAL_EXAM",
     "subjectId": "NEG_INST",
     "chapterId": "NEG_INST-1",
     "chapterNo": 1,
-    "chapterTitle": "票據無因性與票據抗辯限制",
+    "chapterTitle": "票據行為無因性與票據抗辯之限制（票據法§13）",
     "prompt": "關於票據法第 13 條「票據抗辯之限制」，下列敘述何者正確？",
     "options": [
       {
@@ -2989,12 +4196,83 @@ export const SAMPLE_QUESTIONS: Question[] = [
     "officialCorrectRate": 71.5
   },
   {
+    "id": "113-BAR-NEGINST-02",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "NEG_INST",
+    "chapterId": "NEG_INST-2",
+    "chapterNo": 2,
+    "chapterTitle": "票據之偽造、變造與在真正簽名人之責任（§15/§16）",
+    "prompt": "甲之支票簿遭乙竊取，乙擅自偽造甲之簽名簽發面額 100 萬元支票交付丙，丙背書轉讓於丁，丁再背書轉讓於善意不知情之戊。下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "被偽造人甲應對執票人戊負票據發票人之付款責任"
+      },
+      {
+        "label": "B",
+        "text": "票據上有偽造之簽名者，整張支票當然全部無效，在真正簽名之丙、丁均不負任何票據責任"
+      },
+      {
+        "label": "C",
+        "text": "被偽造人甲不負發票人責任；但真正簽名之背書人丙與丁，仍應依票上所載文義負責"
+      },
+      {
+        "label": "D",
+        "text": "偽造人乙因非真正發票人，亦無須負任何票據法上之責任"
+      }
+    ],
+    "correctAnswer": "C",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "依票據法第 15 條，被偽造人甲並未簽名，得主張「物的抗辯」拒絕付款。",
+        "trapType": "誤令被偽造人負票據責任"
+      },
+      "B": {
+        "isCorrect": false,
+        "reason": "依票據法第 15 條「票據簽名獨立性原則」，偽造簽名不影響票上其他真正簽名人之效力。",
+        "trapType": "否定票據簽名獨立性原則"
+      },
+      "C": {
+        "isCorrect": true,
+        "reason": "票據法第 15 條明定：「票據上有偽造或變造之簽名者，不影響於真正簽名人之效力。」甲不負責，丙丁仍負背書人責任。",
+        "trapType": "正解無陷阱"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "偽造人依票據法與刑法負刑責及民事侵權責任。",
+        "trapType": "免除偽造人責任"
+      }
+    },
+    "tags": [
+      "#票據法",
+      "#票據偽造",
+      "#簽名獨立性",
+      "#票據法§15",
+      "#113真題"
+    ],
+    "difficulty": "MEDIUM",
+    "relatedLaws": [
+      {
+        "lawName": "票據法",
+        "articleNo": "第 15 條"
+      }
+    ],
+    "relatedCases": [],
+    "examYear": "113",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 42,
+    "verifiedDate": "2024-08-10",
+    "sourceCitation": "考選部 113 年專技高考律師第一試 綜合法學(二)第42題",
+    "officialCorrectRate": 76.2
+  },
+  {
     "id": "113-BAR-COMPEXEC-01",
     "sourceType": "OFFICIAL_EXAM",
     "subjectId": "COMP_EXEC",
-    "chapterId": "COMP_EXEC-1",
-    "chapterNo": 1,
-    "chapterTitle": "執行救濟與異議之訴體系",
+    "chapterId": "COMP_EXEC-4",
+    "chapterNo": 4,
+    "chapterTitle": "債務人異議之訴（強執§14 排除執行力之要件與時點）",
     "prompt": "關於強制執行法第 14 條「債務人異議之訴」與第 15 條「第三人異議之訴」，下列敘述何者正確？",
     "options": [
       {
@@ -3067,12 +4345,87 @@ export const SAMPLE_QUESTIONS: Question[] = [
     "officialCorrectRate": 58.2
   },
   {
+    "id": "112-BAR-COMPEXEC-02",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "COMP_EXEC",
+    "chapterId": "COMP_EXEC-2",
+    "chapterNo": 2,
+    "chapterTitle": "金錢債權執行：薪資帳戶扣押限制與責任財產調查（§115/§122）",
+    "prompt": "關於強制執行法第 122 條金錢債權執行之「禁止扣押標的與生活費用保障」，下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "債務人對第三人之薪資債權，執行法院得命扣押全額，以利儘速清償債權人"
+      },
+      {
+        "label": "B",
+        "text": "債務人依法領取之社會救助金或維持債務人及其共同生活之親屬生活所必需者，不得為強制執行"
+      },
+      {
+        "label": "C",
+        "text": "強制執行法上生活必需費用之認定，一律以新台幣一萬元為法定上限，不得依地區公告生活費調整"
+      },
+      {
+        "label": "D",
+        "text": "勞工退休金專戶內之退休金，債權人於執行名義確定後得隨時聲請查封扣押"
+      }
+    ],
+    "correctAnswer": "B",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "強制執行法第 115 條之 1 第 2 項明定，薪資扣押以三分之一為原則，且不得低於生活必需費用。",
+        "trapType": "違反薪資扣押限制"
+      },
+      "B": {
+        "isCorrect": true,
+        "reason": "強制執行法第 122 條第 1 項及第 2 項明定：依法領取之社會救助金或維持生活所必需者，不得為強制執行。",
+        "trapType": "正解無陷阱"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "依強執第 122 條第 3 項，生活必需費用係按衛生福利部或直轄市政府公告當年度每人每月最低生活費 1.2 倍計算，非固定一萬元。",
+        "trapType": "忽略最低生活費標準"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "勞工退休金條例第 29 條明定退休金專戶不得扣押、讓與或供擔保。",
+        "trapType": "忽略勞退專戶禁止扣押特別法"
+      }
+    },
+    "tags": [
+      "#強制執行法",
+      "#薪資扣押限制",
+      "#維持生活所必需",
+      "#強執§122",
+      "#112真題"
+    ],
+    "difficulty": "MEDIUM",
+    "relatedLaws": [
+      {
+        "lawName": "強制執行法",
+        "articleNo": "第 122 條"
+      },
+      {
+        "lawName": "強制執行法",
+        "articleNo": "第 115 條之 1"
+      }
+    ],
+    "relatedCases": [],
+    "examYear": "112",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 45,
+    "verifiedDate": "2024-05-01",
+    "sourceCitation": "考選部 112 年專技高考律師第一試 綜合法學(二)第45題",
+    "officialCorrectRate": 64.9
+  },
+  {
     "id": "110-BAR-SECREG-01",
     "sourceType": "OFFICIAL_EXAM",
     "subjectId": "SEC_REG",
     "chapterId": "SEC_REG-1",
     "chapterNo": 1,
-    "chapterTitle": "內線交易與證券市場規範",
+    "chapterTitle": "內線交易禁止：重大消息明確時點與18小時沉澱期（§157-1）",
     "prompt": "依證券交易法第 157 條之 1 關於「內線交易」之禁止規範，下列敘述何者正確？",
     "options": [
       {
@@ -3138,12 +4491,84 @@ export const SAMPLE_QUESTIONS: Question[] = [
     "officialCorrectRate": 61.2
   },
   {
+    "id": "113-BAR-SECREG-02",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "SEC_REG",
+    "chapterId": "SEC_REG-2",
+    "chapterNo": 2,
+    "chapterTitle": "短線交易歸入權：董監事經理人6個月買賣差價計算（§157）",
+    "prompt": "關於證券交易法第 157 條所定「短線交易歸入權」，下列敘述何者正確？",
+    "options": [
+      {
+        "label": "A",
+        "text": "歸入權之行使主體為金融監督管理委員會，所得利益歸入國庫"
+      },
+      {
+        "label": "B",
+        "text": "上市發行公司董事、監察人、經理人或持股超過百分之十之大股東，對公司上市股票於取得後六個月內再行賣出，或賣出後六個月內再行買進者，公司應請求將其所得之利益歸於公司"
+      },
+      {
+        "label": "C",
+        "text": "計算短線交易差價所得利益時，一律採「先進先出法」計算"
+      },
+      {
+        "label": "D",
+        "text": "歸入權自買賣行為完成之日起，逾五年不行使而消滅"
+      }
+    ],
+    "correctAnswer": "B",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": false,
+        "reason": "證交法第 157 條明定歸入權請求權人為「發行公司」，利益歸屬於「公司」，非國庫。",
+        "trapType": "請求主體與利益歸屬混淆"
+      },
+      "B": {
+        "isCorrect": true,
+        "reason": "證券交易法第 157 條第 1 項明定：董監經理人或持股逾10%大股東，6個月內買進賣出或賣出買進，所得利益應歸於公司。",
+        "trapType": "正解無陷阱"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "依證券交易法施行細則第 11 條第 2 項，計算利益採「最高賣價配最低買價法」（差價最大化原則），非先進先出法。",
+        "trapType": "差價計算公式錯誤"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "依證交法第 157 條第 2 項，歸入權自獲得利益之日起「二年間」不行使而消滅，非五年。",
+        "trapType": "將2年除斥期間記成5年"
+      }
+    },
+    "tags": [
+      "#證券交易法",
+      "#短線交易",
+      "#歸入權",
+      "#最高賣價配最低買價法",
+      "#證交法§157",
+      "#113真題"
+    ],
+    "difficulty": "HARD",
+    "relatedLaws": [
+      {
+        "lawName": "證券交易法",
+        "articleNo": "第 157 條"
+      }
+    ],
+    "relatedCases": [],
+    "examYear": "113",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 46,
+    "verifiedDate": "2024-08-10",
+    "sourceCitation": "考選部 113 年專技高考律師第一試 綜合法學(二)第46題",
+    "officialCorrectRate": 63.5
+  },
+  {
     "id": "113-BAR-LEGENG-01",
     "sourceType": "OFFICIAL_EXAM",
     "subjectId": "LEGAL_ENG",
-    "chapterId": "LEGAL_ENG-1",
-    "chapterNo": 1,
-    "chapterTitle": "英美法核心憲政與訴訟詞彙",
+    "chapterId": "LEGAL_ENG-2",
+    "chapterNo": 2,
+    "chapterTitle": "刑事訴訟證據排除法制（Exclusionary Rule, Plain View, Warrant）",
     "prompt": "In U.S. Constitutional Law, which of the following legal doctrines prohibits the government from introducing evidence obtained in violation of the Fourth Amendment protection against unreasonable searches and seizures in a criminal trial?",
     "options": [
       {
@@ -3213,6 +4638,77 @@ export const SAMPLE_QUESTIONS: Question[] = [
     "verifiedDate": "2024-08-10",
     "sourceCitation": "考選部 113 年專技高考律師第一試 綜合法學(二)第49題",
     "officialCorrectRate": 78.4
+  },
+  {
+    "id": "112-BAR-LEGENG-02",
+    "sourceType": "OFFICIAL_EXAM",
+    "subjectId": "LEGAL_ENG",
+    "chapterId": "LEGAL_ENG-3",
+    "chapterNo": 3,
+    "chapterTitle": "英美契約與侵權法專用詞彙（Consideration, Strict Liability, Tort）",
+    "prompt": "Under Anglo-American Common Law of Contracts, which essential element refers to the \"bargained-for exchange\" of something of legal value required to make a promise enforceable as a valid contract?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Consideration"
+      },
+      {
+        "label": "B",
+        "text": "Injunction"
+      },
+      {
+        "label": "C",
+        "text": "Tortfeasor"
+      },
+      {
+        "label": "D",
+        "text": "Habeas Corpus"
+      }
+    ],
+    "correctAnswer": "A",
+    "optionExplanations": {
+      "A": {
+        "isCorrect": true,
+        "reason": "Consideration（約因/對價）為英美契約法最核心之有效要件，指雙方當事人互為交換具法律價值之對待給付（bargained-for exchange of value）。",
+        "trapType": "正解無陷阱"
+      },
+      "B": {
+        "isCorrect": false,
+        "reason": "Injunction 指衡平法上之「禁制令/假處分命令」。",
+        "trapType": "衡平救濟名詞混淆"
+      },
+      "C": {
+        "isCorrect": false,
+        "reason": "Tortfeasor 指侵權行為法上之「侵權行為人/加害人」。",
+        "trapType": "侵權主體名詞混淆"
+      },
+      "D": {
+        "isCorrect": false,
+        "reason": "Habeas Corpus 指憲法上保護人身自由之「提審令/人身保護令狀」。",
+        "trapType": "混淆憲法人身自由名詞"
+      }
+    },
+    "tags": [
+      "#法學英文",
+      "#Contracts",
+      "#Consideration",
+      "#約因",
+      "#112真題"
+    ],
+    "difficulty": "MEDIUM",
+    "relatedLaws": [
+      {
+        "lawName": "Restatement (Second) of Contracts",
+        "articleNo": "Section 71"
+      }
+    ],
+    "relatedCases": [],
+    "examYear": "112",
+    "examSession": "專技高考律師第一試",
+    "questionNo": 50,
+    "verifiedDate": "2024-05-01",
+    "sourceCitation": "考選部 112 年專技高考律師第一試 綜合法學(二)第50題",
+    "officialCorrectRate": 82.1
   }
 ];
 
