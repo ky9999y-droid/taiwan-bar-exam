@@ -18,7 +18,38 @@ const STORAGE_KEYS = {
   BOOKMARKS: 'bar_exam_bookmarks',
   USER_NOTES: 'bar_exam_user_notes',
   MOCK_RESULTS: 'bar_exam_mock_results',
-  CUSTOM_QUESTIONS: 'bar_exam_custom_questions'
+  CUSTOM_QUESTIONS: 'bar_exam_custom_questions',
+  FLASHCARD_RATINGS: 'bar_exam_flashcard_ratings'
+};
+
+export interface FlashcardRatingRecord {
+  cardId: string;
+  rating: 'KNOWN' | 'VAGUE' | 'UNKNOWN';
+  ratedAt: string;
+  reviewCount: number;
+}
+
+export const getStoredFlashcardRatings = (): Record<string, FlashcardRatingRecord> => {
+  if (typeof window === 'undefined') return {};
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.FLASHCARD_RATINGS);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+};
+
+export const saveFlashcardRating = (cardId: string, rating: 'KNOWN' | 'VAGUE' | 'UNKNOWN'): void => {
+  if (typeof window === 'undefined') return;
+  const existing = getStoredFlashcardRatings();
+  const prevCount = existing[cardId]?.reviewCount || 0;
+  existing[cardId] = {
+    cardId,
+    rating,
+    ratedAt: new Date().toISOString(),
+    reviewCount: prevCount + 1
+  };
+  localStorage.setItem(STORAGE_KEYS.FLASHCARD_RATINGS, JSON.stringify(existing));
 };
 
 export const getStoredAnswers = (): UserAnswerRecord[] => {
