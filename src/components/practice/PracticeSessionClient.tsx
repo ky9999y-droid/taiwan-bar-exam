@@ -16,7 +16,8 @@ import {
   ArrowLeft,
   ShieldCheck,
   Eye,
-  EyeOff
+  EyeOff,
+  BarChart3
 } from 'lucide-react';
 
 import { getAllQuestions, saveAnswer, toggleTrapMark, getStoredAnswers } from '@/lib/storage';
@@ -35,6 +36,8 @@ export function PracticeSessionClient({ sessionId }: { sessionId: string }) {
   const [showInstantExplanation, setShowInstantExplanation] = useState<boolean>(true);
   const [timeLeftSeconds, setTimeLeftSeconds] = useState<number>(1800); // 30 mins
   const [isFinished, setIsFinished] = useState<boolean>(false);
+  const [isMockExam, setIsMockExam] = useState<boolean>(false);
+  const [examTitle, setExamTitle] = useState<string>('真題練習');
 
   useEffect(() => {
     const all = getAllQuestions();
@@ -44,19 +47,55 @@ export function PracticeSessionClient({ sessionId }: { sessionId: string }) {
 
     // 1. Paper 1 mock test (paper-1-113, session-paper-1-113, etc.)
     if (rawKey.startsWith('paper-1')) {
+      const year = rawKey.split('-')[2] || '113';
       const p1Subjects = ['CONST', 'ADMIN', 'CRIM', 'CRIM_PROC', 'PUB_INT_LAW', 'PRIV_INT_LAW', 'LEGAL_ETH'];
       filtered = all.filter(q => p1Subjects.includes(q.subjectId));
+      setIsMockExam(true);
+      setShowInstantExplanation(false);
+      setTimeLeftSeconds(180 * 60); // 180 mins
+      setExamTitle(`${year} 年 綜合法學（一）全真計時模擬考`);
     }
     // 2. Paper 2 mock test (paper-2-113, session-paper-2-113, etc.)
     else if (rawKey.startsWith('paper-2')) {
+      const year = rawKey.split('-')[2] || '113';
       const p2Subjects = ['CIVIL', 'CIVIL_PROC', 'CORP', 'INSUR', 'NEG_INST', 'COMP_EXEC', 'SEC_REG', 'LEGAL_ENG'];
       filtered = all.filter(q => p2Subjects.includes(q.subjectId));
+      setIsMockExam(true);
+      setShowInstantExplanation(false);
+      setTimeLeftSeconds(180 * 60); // 180 mins
+      setExamTitle(`${year} 年 綜合法學（二）全真計時模擬考`);
     }
-    // 3. Specific subject practice (session-ADMIN, session-CONST, session-CRIM, session-CIVIL, etc.)
+    // 3. Single Subject Specials (single-admin-113, single-crimproc-113, etc.)
+    else if (rawKey.startsWith('single-admin')) {
+      const year = rawKey.split('-')[2] || '113';
+      filtered = all.filter(q => q.subjectId === 'ADMIN');
+      setIsMockExam(true);
+      setShowInstantExplanation(false);
+      setTimeLeftSeconds(25 * 60); // 25 mins
+      setExamTitle(`${year} 年 行政法單科突破專卷`);
+    }
+    else if (rawKey.startsWith('single-crimproc')) {
+      const year = rawKey.split('-')[2] || '113';
+      filtered = all.filter(q => q.subjectId === 'CRIM_PROC');
+      setIsMockExam(true);
+      setShowInstantExplanation(false);
+      setTimeLeftSeconds(25 * 60); // 25 mins
+      setExamTitle(`${year} 年 刑事訴訟法單科突破專卷`);
+    }
+    else if (rawKey === 'mock') {
+      filtered = all;
+      setIsMockExam(true);
+      setShowInstantExplanation(false);
+      setTimeLeftSeconds(180 * 60);
+      setExamTitle('全真模擬考場綜合試卷');
+    }
+    // 4. Specific subject practice (session-ADMIN, session-CONST, session-CRIM, session-CIVIL, etc.)
     else if (SUBJECTS_INFO.some(s => s.id === rawKey)) {
       filtered = all.filter(q => q.subjectId === rawKey);
+      const sub = SUBJECTS_INFO.find(s => s.id === rawKey);
+      setExamTitle(`${sub?.name || rawKey} 專題刷題`);
     }
-    // 4. Chapter-level practice (session-ADMIN-1, session-ADMIN-3, session-CRIM_PROC-7, etc.)
+    // 5. Chapter-level practice (session-ADMIN-1, session-ADMIN-3, session-CRIM_PROC-7, etc.)
     else if (rawKey.includes('-') && !rawKey.startsWith('113-') && !rawKey.startsWith('112-') && !rawKey.startsWith('111-') && !rawKey.startsWith('110-') && !rawKey.startsWith('109-')) {
       const subId = rawKey.split('-')[0];
       const matchChapter = all.filter(q => q.chapterId === rawKey);
@@ -66,30 +105,37 @@ export function PracticeSessionClient({ sessionId }: { sessionId: string }) {
         // Fallback to subject's own questions
         filtered = all.filter(q => q.subjectId === subId);
       }
+      setExamTitle(`章節測驗：${rawKey}`);
     }
-    // 5. Single question (session-113-BAR-CONST-01, etc.)
+    // 6. Single question (session-113-BAR-CONST-01, etc.)
     else if (all.some(q => q.id === rawKey)) {
       filtered = all.filter(q => q.id === rawKey);
+      setExamTitle('精選單題深度演練');
     }
-    // 6. Wrong questions review session
+    // 7. Wrong questions review session
     else if (rawKey === 'wrong') {
       const stored = getStoredAnswers();
       const wrongIds = stored.filter(a => !a.isCorrect).map(a => a.questionId);
       filtered = all.filter(q => wrongIds.includes(q.id));
+      setExamTitle('錯題強化與歸因重測');
     }
-    // 7. Traps review session
+    // 8. Traps review session
     else if (rawKey === 'traps') {
       const stored = getStoredAnswers();
       const trapIds = stored.filter(a => a.isMarkedTrap).map(a => a.questionId);
       filtered = all.filter(q => trapIds.includes(q.id));
+      setExamTitle('陷阱題專題重測');
     }
-    // 8. General / Quick / Daily
+    // 9. General / Quick / Daily
     else if (rawKey === 'daily-15') {
       filtered = all.slice(0, 15);
+      setExamTitle('每日精選 15 題晨間速刷');
     } else if (rawKey === 'quick') {
       filtered = all.slice(0, 10);
+      setExamTitle('快速診斷 10 題速測');
     } else {
       filtered = all;
+      setExamTitle('全真歷屆題庫練習');
     }
 
     if (filtered.length === 0) {
@@ -154,9 +200,9 @@ export function PracticeSessionClient({ sessionId }: { sessionId: string }) {
       import('canvas-confetti').then((confettiModule) => {
         const confetti = confettiModule.default;
         confetti({
-          particleCount: 80,
-          spread: 70,
-          origin: { y: 0.6 }
+          particleCount: 100,
+          spread: 80,
+          origin: { y: 0.5 }
         });
       }).catch(() => {});
     }
@@ -180,14 +226,160 @@ export function PracticeSessionClient({ sessionId }: { sessionId: string }) {
   const isTrapMarked = !!markedTraps[currentQ.id];
   const isReviewFlagged = !!markedReview[currentQ.id];
 
+  const correctCount = questions.filter(q => selectedAnswers[q.id] === q.correctAnswer).length;
+  const wrongCount = questions.filter(q => selectedAnswers[q.id] && selectedAnswers[q.id] !== q.correctAnswer).length;
+  const unansweredCount = questions.filter(q => !selectedAnswers[q.id]).length;
+  const totalScore = isMockExam ? 300 : 100;
+  const calculatedScore = questions.length > 0 ? Math.round((correctCount / questions.length) * totalScore) : 0;
+  const accuracyPercentage = questions.length > 0 ? Math.round((correctCount / questions.length) * 100) : 0;
+
+  // Group by subjects for subject-level diagnostic breakdown
+  const subjectBreakdown: Record<string, { total: number; correct: number; name: string }> = {};
+  questions.forEach(q => {
+    if (!subjectBreakdown[q.subjectId]) {
+      const subInfo = SUBJECTS_INFO.find(s => s.id === q.subjectId);
+      subjectBreakdown[q.subjectId] = { total: 0, correct: 0, name: subInfo?.name || q.subjectId };
+    }
+    subjectBreakdown[q.subjectId].total += 1;
+    if (selectedAnswers[q.id] === q.correctAnswer) {
+      subjectBreakdown[q.subjectId].correct += 1;
+    }
+  });
+
   return (
     <div className="max-w-5xl mx-auto space-y-6">
+
+      {/* When Finished: Comprehensive Mock Exam Score Card & Diagnostic Report */}
+      {isFinished && (
+        <div className="bg-white dark:bg-navy-900 rounded-3xl p-6 sm:p-8 border-2 border-gold-500/50 shadow-2xl space-y-6 animate-fadeIn">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 dark:border-navy-800 pb-5">
+            <div>
+              <div className="flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400">
+                <CheckCircle2 className="w-4 h-4" /> 測驗已交卷 ｜ 完整作答報告
+              </div>
+              <h2 className="text-xl sm:text-2xl font-extrabold text-navy-900 dark:text-white mt-1">
+                {examTitle} - 結算成績單
+              </h2>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => {
+                  setSelectedAnswers({});
+                  setIsFinished(false);
+                  setTimeLeftSeconds(isMockExam ? 180 * 60 : 1800);
+                  setCurrentIndex(0);
+                }}
+                className="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-navy-800 text-slate-700 dark:text-slate-200 text-xs font-bold hover:bg-slate-200 transition flex items-center gap-1.5"
+              >
+                <RotateCcw className="w-3.5 h-3.5" /> 重新測驗本卷
+              </button>
+              <Link
+                href="/exam/mock"
+                className="px-3.5 py-2 rounded-xl bg-navy-900 dark:bg-gold-500 text-white dark:text-navy-950 text-xs font-bold hover:bg-navy-800 dark:hover:bg-gold-400 transition flex items-center gap-1.5"
+              >
+                返回模考專區
+              </Link>
+            </div>
+          </div>
+
+          {/* Big Score Header */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="p-4 rounded-2xl bg-gradient-to-br from-gold-500/10 to-amber-500/10 border border-gold-300 dark:border-gold-800 text-center">
+              <span className="text-xs text-slate-500 dark:text-slate-400 block font-semibold">總得分數</span>
+              <span className="text-4xl font-black text-navy-900 dark:text-gold-400">{calculatedScore}</span>
+              <span className="text-xs text-slate-400"> / {totalScore} 分</span>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-center">
+              <span className="text-xs text-emerald-700 dark:text-emerald-300 block font-semibold">答對題數</span>
+              <span className="text-4xl font-black text-emerald-600 dark:text-emerald-400">{correctCount}</span>
+              <span className="text-xs text-slate-400"> / {questions.length} 題</span>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 text-center">
+              <span className="text-xs text-red-700 dark:text-red-300 block font-semibold">答錯題數</span>
+              <span className="text-4xl font-black text-red-600 dark:text-red-400">{wrongCount}</span>
+              <span className="text-xs text-slate-400"> 題 ({accuracyPercentage}%)</span>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-navy-800 text-center">
+              <span className="text-xs text-slate-500 dark:text-slate-400 block font-semibold">落點及格判定</span>
+              <div className="text-sm font-extrabold mt-2">
+                {accuracyPercentage >= 65 ? (
+                  <span className="text-emerald-600 dark:text-emerald-400">✅ 及格安全區 (前 33%)</span>
+                ) : accuracyPercentage >= 50 ? (
+                  <span className="text-amber-600 dark:text-amber-400">⚠️ 邊緣警戒區</span>
+                ) : (
+                  <span className="text-red-500">❌ 需重點加強</span>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Subject by Subject Breakdown */}
+          <div className="space-y-3">
+            <h3 className="font-bold text-sm text-navy-900 dark:text-white flex items-center gap-1.5">
+              <BarChart3 className="w-4 h-4 text-gold-500" /> 本次模擬考各科目得分掌握度
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+              {Object.entries(subjectBreakdown).map(([sId, info]) => {
+                const rate = Math.round((info.correct / info.total) * 100);
+                const isWeak = rate < 60;
+                return (
+                  <div
+                    key={sId}
+                    className={`p-3.5 rounded-xl border space-y-1.5 ${
+                      isWeak
+                        ? 'bg-red-50/50 dark:bg-red-950/30 border-red-200 dark:border-red-900/60'
+                        : 'bg-slate-50 dark:bg-navy-950 border-slate-200 dark:border-navy-800'
+                    }`}
+                  >
+                    <div className="flex justify-between font-bold text-xs">
+                      <span>{info.name}</span>
+                      <span className={isWeak ? 'text-red-500' : 'text-emerald-600 dark:text-emerald-400'}>
+                        {info.correct} / {info.total} 題 ({rate}%) {isWeak ? '⚠️弱點' : '🟢良好'}
+                      </span>
+                    </div>
+                    <div className="w-full bg-slate-200 dark:bg-navy-800 h-1.5 rounded-full overflow-hidden">
+                      <div
+                        className={`h-full ${isWeak ? 'bg-red-500' : 'bg-emerald-500'}`}
+                        style={{ width: `${rate}%` }}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Quick Review of Wrong Questions */}
+          {wrongCount > 0 && (
+            <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/60 flex items-center justify-between gap-4 text-xs">
+              <div>
+                <span className="font-bold text-amber-900 dark:text-amber-200">
+                  💡 建議立即檢視本次錯題 ({wrongCount} 題)
+                </span>
+                <p className="text-amber-700 dark:text-amber-300 text-[11px] mt-0.5">
+                  在下方答題卡點選紅色題號，即可直接查看該題的「A/B/C/D 逐選項深度解析」與「命題陷阱分析」。
+                </p>
+              </div>
+              <Link
+                href="/review/wrong"
+                className="px-3.5 py-1.5 rounded-xl bg-amber-600 text-white font-bold whitespace-nowrap hover:bg-amber-500 shadow-sm transition"
+              >
+                前往錯題本 ➔
+              </Link>
+            </div>
+          )}
+        </div>
+      )}
       
       {/* Top Test Header Bar */}
       <div className="bg-white dark:bg-navy-900 rounded-2xl p-4 sm:p-5 border border-slate-200 dark:border-navy-800 shadow-sm flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <Link
-            href="/questions"
+            href={isMockExam ? '/exam/mock' : '/questions'}
             className="p-2 rounded-xl bg-slate-100 dark:bg-navy-800 hover:bg-slate-200 dark:hover:bg-navy-700 text-slate-600 dark:text-slate-300 transition"
             title="退出測驗"
           >
@@ -196,14 +388,14 @@ export function PracticeSessionClient({ sessionId }: { sessionId: string }) {
           <div>
             <div className="flex items-center gap-2">
               <span className="text-xs font-bold text-navy-900 dark:text-white">
-                {currentQ.chapterTitle}
+                {examTitle}
               </span>
               <span className="text-[10px] px-2 py-0.5 rounded font-bold bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300">
-                🟦 官方歷屆
+                {isMockExam ? '⏱️ 全真模考' : '🟦 歷屆練習'}
               </span>
             </div>
             <span className="text-[11px] text-slate-400">
-              進度：{currentIndex + 1} / {questions.length} 題
+              進度：第 {currentIndex + 1} / {questions.length} 題
             </span>
           </div>
         </div>
@@ -369,6 +561,21 @@ export function PracticeSessionClient({ sessionId }: { sessionId: string }) {
             const isAnswered = !!selectedAnswers[q.id];
             const isCurrent = idx === currentIndex;
             const isFlagged = !!markedReview[q.id];
+            const isCorrect = selectedAnswers[q.id] === q.correctAnswer;
+            const isWrong = selectedAnswers[q.id] && selectedAnswers[q.id] !== q.correctAnswer;
+
+            let btnBg = 'bg-slate-100 dark:bg-navy-950 text-slate-600 dark:text-slate-400 hover:bg-slate-200';
+            if (isFinished) {
+              if (isCorrect) {
+                btnBg = 'bg-emerald-500 text-white shadow-sm';
+              } else if (isWrong) {
+                btnBg = 'bg-red-500 text-white shadow-sm';
+              } else {
+                btnBg = 'bg-slate-200 dark:bg-navy-800 text-slate-500';
+              }
+            } else if (isAnswered) {
+              btnBg = 'bg-emerald-100 text-emerald-900 dark:bg-emerald-950 dark:text-emerald-300';
+            }
 
             return (
               <button
@@ -376,13 +583,9 @@ export function PracticeSessionClient({ sessionId }: { sessionId: string }) {
                 onClick={() => setCurrentIndex(idx)}
                 className={`w-9 h-9 rounded-xl text-xs font-bold transition flex items-center justify-center relative ${
                   isCurrent
-                    ? 'ring-2 ring-gold-500 font-extrabold shadow-md'
+                    ? 'ring-2 ring-gold-500 font-extrabold shadow-md scale-105'
                     : ''
-                } ${
-                  isAnswered
-                    ? 'bg-emerald-100 text-emerald-900 dark:bg-emerald-950 dark:text-emerald-300'
-                    : 'bg-slate-100 dark:bg-navy-950 text-slate-600 dark:text-slate-400 hover:bg-slate-200'
-                }`}
+                } ${btnBg}`}
               >
                 {idx + 1}
                 {isFlagged && (
