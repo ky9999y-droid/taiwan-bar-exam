@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   BookOpen,
@@ -15,34 +15,71 @@ import {
   Play,
   RotateCcw,
   Star,
-  Target
+  Target,
+  BarChart3,
+  Sparkles
 } from 'lucide-react';
 import { SUBJECTS_INFO, CHAPTER_SEED_LIST } from '@/data/seedData';
 import { MasteryState, SubjectId } from '@/types';
+import { getChapterDynamicMastery, getStoredAnswers } from '@/lib/storage';
 
 export function SubjectDetailClient({ subjectId }: { subjectId: SubjectId }) {
   const [filterState, setFilterState] = useState<'ALL' | MasteryState>('ALL');
+  const [userAnswersCount, setUserAnswersCount] = useState<number>(0);
+  const [mounted, setMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const answers = getStoredAnswers();
+    setUserAnswersCount(answers.length);
+  }, []);
 
   const subject = SUBJECTS_INFO.find(s => s.id === subjectId) || SUBJECTS_INFO[1];
-  const chapters = CHAPTER_SEED_LIST.filter(c => c.subjectId === subjectId);
+  const rawChapters = CHAPTER_SEED_LIST.filter(c => c.subjectId === subjectId);
+
+  // Dynamically compute mastery for each chapter from real user answer storage
+  const chapters = rawChapters.map(c => {
+    const chapKey = `${c.subjectId}-${c.chapterNo}`;
+    if (!mounted) return { ...c, dynamic: null };
+    const dynamic = getChapterDynamicMastery(c.subjectId, c.chapterNo, chapKey);
+    return {
+      ...c,
+      masteryPercentage: dynamic.isCustomData ? dynamic.masteryPercentage : 0,
+      status: dynamic.isCustomData ? dynamic.status : 'UNLEARNED',
+      isWeakness: dynamic.isCustomData ? dynamic.isWeakness : false,
+      dynamic
+    };
+  });
+
+  const attemptedCount = chapters.filter(c => c.dynamic && c.dynamic.isCustomData).length;
+  const weaknessCount = chapters.filter(c => c.isWeakness).length;
+  const masteredCount = chapters.filter(c => c.status === 'MASTERED').length;
 
   const filteredChapters = chapters.filter(c => {
     if (filterState === 'ALL') return true;
     return c.status === filterState;
   });
 
-  const getStatusBadge = (status: MasteryState, percentage: number) => {
+  const getStatusBadge = (status: MasteryState, percentage: number, isCustomData: boolean) => {
+    if (!isCustomData) {
+      return (
+        <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-500 dark:bg-navy-800 dark:text-slate-400 flex items-center gap-1 border border-slate-200 dark:border-navy-700">
+          <Clock className="w-3.5 h-3.5" /> 尚未測驗 (0%)
+        </span>
+      );
+    }
+
     switch (status) {
       case 'MASTERED':
         return (
           <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 flex items-center gap-1">
-            <CheckCircle2 className="w-3.5 h-3.5" /> 熟練 ({percentage}%)
+            <CheckCircle2 className="w-3.5 h-3.5" /> 🟢 熟練 ({percentage}%)
           </span>
         );
       case 'WEAKNESS':
         return (
           <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300 flex items-center gap-1 animate-pulse">
-            <AlertTriangle className="w-3.5 h-3.5" /> ⚠️弱點 ({percentage}%)
+            <AlertTriangle className="w-3.5 h-3.5" /> ⚠️ 弱點 ({percentage}%)
           </span>
         );
       case 'NEEDS_REVIEW':
@@ -66,7 +103,7 @@ export function SubjectDetailClient({ subjectId }: { subjectId: SubjectId }) {
       default:
         return (
           <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 dark:bg-navy-800 dark:text-slate-300">
-            尚未學習
+            尚未測驗
           </span>
         );
     }
@@ -116,6 +153,39 @@ export function SubjectDetailClient({ subjectId }: { subjectId: SubjectId }) {
         </div>
       </div>
 
+      {/* Dynamic Progress Engine Banner */}
+      <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-gold-500/10 border border-blue-200 dark:border-navy-700 flex flex-wrap items-center justify-between gap-4 text-xs">
+        <div className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold">
+            <BarChart3 className="w-4 h-4" />
+          </div>
+          <div>
+            <div className="font-bold text-navy-900 dark:text-white flex items-center gap-1.5">
+              動態學習掌握度引擎
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 font-bold">
+                實時個人作答統計
+              </span>
+            </div>
+            <p className="text-slate-500 dark:text-slate-400 text-[11px] mt-0.5">
+              {attemptedCount > 0
+                ? `您已在本科完成 ${attemptedCount} / ${chapters.length} 個章節測驗（熟練 ${masteredCount} 章、弱點 ${weaknessCount} 章）`
+                : '尚未開始本科測驗，點選各章「做本章歷屆題」即可自動記錄您的作答正確率並即時標示弱點章節'}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-4 font-bold text-slate-700 dark:text-slate-200">
+          <div className="text-right">
+            <div className="text-xs text-slate-400">已測驗章節</div>
+            <div className="text-sm font-extrabold text-navy-900 dark:text-gold-400">{attemptedCount} / {chapters.length}</div>
+          </div>
+          <div className="text-right">
+            <div className="text-xs text-slate-400">⚠️ 弱點章節</div>
+            <div className="text-sm font-extrabold text-red-500">{weaknessCount}</div>
+          </div>
+        </div>
+      </div>
+
       {/* 6-State Filter Bar */}
       <div className="bg-slate-100 dark:bg-navy-950 p-1.5 rounded-2xl border border-slate-200 dark:border-navy-800 flex items-center gap-1.5 overflow-x-auto text-xs">
         <button
@@ -136,7 +206,7 @@ export function SubjectDetailClient({ subjectId }: { subjectId: SubjectId }) {
               : 'text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30'
           }`}
         >
-          <AlertTriangle className="w-3.5 h-3.5" /> ⚠️弱點
+          <AlertTriangle className="w-3.5 h-3.5" /> ⚠️弱點 ({weaknessCount})
         </button>
         <button
           onClick={() => setFilterState('NEEDS_REVIEW')}
@@ -156,7 +226,7 @@ export function SubjectDetailClient({ subjectId }: { subjectId: SubjectId }) {
               : 'text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/30'
           }`}
         >
-          <CheckCircle2 className="w-3.5 h-3.5" /> 熟練
+          <CheckCircle2 className="w-3.5 h-3.5" /> 🟢 熟練 ({masteredCount})
         </button>
         <button
           onClick={() => setFilterState('COMPLETED')}
@@ -194,7 +264,7 @@ export function SubjectDetailClient({ subjectId }: { subjectId: SubjectId }) {
                     <h3 className="font-bold text-sm sm:text-base text-navy-900 dark:text-white">
                       {chap.title}
                     </h3>
-                    {getStatusBadge(chap.status, chap.masteryPercentage)}
+                    {getStatusBadge(chap.status, chap.masteryPercentage, !!chap.dynamic?.isCustomData)}
                   </div>
 
                   <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 dark:text-slate-400 pt-0.5">

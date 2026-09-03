@@ -240,3 +240,111 @@ export const getDailyTasks = (): DailyStudyTask[] => {
     }
   ];
 };
+
+export interface DynamicChapterMastery {
+  totalAnswered: number;
+  correctCount: number;
+  correctRate: number; // 0 ~ 100
+  masteryPercentage: number;
+  status: 'UNLEARNED' | 'LEARNING' | 'COMPLETED' | 'NEEDS_REVIEW' | 'WEAKNESS' | 'MASTERED';
+  isWeakness: boolean;
+  isCustomData: boolean; // whether user has answered questions
+}
+
+export const getChapterDynamicMastery = (subjectId: string, chapterNo: number, chapterId?: string): DynamicChapterMastery => {
+  if (typeof window === 'undefined') {
+    return {
+      totalAnswered: 0,
+      correctCount: 0,
+      correctRate: 0,
+      masteryPercentage: 0,
+      status: 'UNLEARNED',
+      isWeakness: false,
+      isCustomData: false
+    };
+  }
+
+  const answers = getStoredAnswers();
+  const allQuestions = getAllQuestions();
+  
+  const targetChapterKey = chapterId || `${subjectId}-${chapterNo}`;
+  const chapterQuestions = allQuestions.filter(
+    q => q.chapterId === targetChapterKey || (q.subjectId === subjectId && q.chapterNo === chapterNo)
+  );
+  const chapterQIds = chapterQuestions.map(q => q.id);
+  
+  const answeredInChapter = answers.filter(a => chapterQIds.includes(a.questionId));
+  
+  if (answeredInChapter.length === 0) {
+    return {
+      totalAnswered: 0,
+      correctCount: 0,
+      correctRate: 0,
+      masteryPercentage: 0,
+      status: 'UNLEARNED',
+      isWeakness: false,
+      isCustomData: false
+    };
+  }
+
+  const correctCount = answeredInChapter.filter(a => a.isCorrect).length;
+  const rate = Math.round((correctCount / answeredInChapter.length) * 100);
+
+  let status: 'UNLEARNED' | 'LEARNING' | 'COMPLETED' | 'NEEDS_REVIEW' | 'WEAKNESS' | 'MASTERED' = 'LEARNING';
+  let isWeakness = false;
+
+  if (answeredInChapter.length >= 2) {
+    if (rate >= 80) status = 'MASTERED';
+    else if (rate >= 60) status = 'COMPLETED';
+    else {
+      status = 'WEAKNESS';
+      isWeakness = true;
+    }
+  } else {
+    status = rate >= 50 ? 'LEARNING' : 'WEAKNESS';
+    if (rate < 50) isWeakness = true;
+  }
+
+  return {
+    totalAnswered: answeredInChapter.length,
+    correctCount,
+    correctRate: rate,
+    masteryPercentage: rate,
+    status,
+    isWeakness,
+    isCustomData: true
+  };
+};
+
+export const getSubjectDynamicMastery = (subjectId: string): {
+  totalAnswered: number;
+  correctCount: number;
+  correctRate: number;
+  masteryPercentage: number;
+  isCustomData: boolean;
+} => {
+  if (typeof window === 'undefined') {
+    return { totalAnswered: 0, correctCount: 0, correctRate: 0, masteryPercentage: 0, isCustomData: false };
+  }
+
+  const answers = getStoredAnswers();
+  const allQuestions = getAllQuestions();
+  const subjectQIds = allQuestions.filter(q => q.subjectId === subjectId).map(q => q.id);
+  const answeredInSubject = answers.filter(a => subjectQIds.includes(a.questionId));
+
+  if (answeredInSubject.length === 0) {
+    return { totalAnswered: 0, correctCount: 0, correctRate: 0, masteryPercentage: 0, isCustomData: false };
+  }
+
+  const correctCount = answeredInSubject.filter(a => a.isCorrect).length;
+  const rate = Math.round((correctCount / answeredInSubject.length) * 100);
+
+  return {
+    totalAnswered: answeredInSubject.length,
+    correctCount,
+    correctRate: rate,
+    masteryPercentage: rate,
+    isCustomData: true
+  };
+};
+

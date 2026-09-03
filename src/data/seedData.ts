@@ -103,7 +103,7 @@ export const SUBJECTS_INFO: SubjectInfo[] = [
   {
     id: 'CIVIL_PROC',
     paper: 'PAPER_2',
-    name: '民事訴訟法',
+    name: '民事訴訟法及家事事件法',
     nameEn: 'Civil Procedure',
     officialScore: 150,
     totalChapters: 14,
