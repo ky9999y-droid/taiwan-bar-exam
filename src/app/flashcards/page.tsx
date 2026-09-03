@@ -19,7 +19,7 @@ import {
   Flame,
   Scale
 } from 'lucide-react';
-import { SEED_FLASHCARDS, SUBJECTS_INFO } from '@/data/seedData';
+import { SEED_FLASHCARDS, SUBJECTS_INFO, CHAPTER_SEED_LIST, getChapterTextbook } from '@/data/seedData';
 import { Flashcard, SubjectId } from '@/types';
 import { getStoredFlashcardRatings, saveFlashcardRating, FlashcardRatingRecord } from '@/lib/storage';
 
@@ -29,7 +29,27 @@ export default function FlashcardsPage() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
   const [ratings, setRatings] = useState<Record<string, FlashcardRatingRecord>>({});
-  const [cards, setCards] = useState<Flashcard[]>(SEED_FLASHCARDS);
+
+  // Generate full library combining 54 core seed cards + 91 chapter-level deep cards
+  const allInitialCards: Flashcard[] = React.useMemo(() => {
+    const chapterCards: Flashcard[] = CHAPTER_SEED_LIST.map((chap) => {
+      const tb = getChapterTextbook(`${chap.subjectId}-${chap.chapterNo}`);
+      const law1 = tb.importantLaws?.[0];
+      const trap1 = tb.commonTraps?.[0];
+      return {
+        id: `fc-chap-${chap.subjectId}-${chap.chapterNo}`,
+        subjectId: chap.subjectId as SubjectId,
+        chapterTitle: `第 ${chap.chapterNo} 章：${chap.title}`,
+        front: `【核心觀念與考點】${chap.title}之法理本質與出題重點為何？`,
+        back: `💡 核心觀念：\n${tb.coreConcept}\n\n${law1 ? `📜 重要法條（${law1.lawName} ${law1.articleNo}）：\n${law1.keyClause}\n關鍵字：${law1.coreKeywords?.join('、') || ''}\n\n` : ''}${trap1 ? `⚠️ 命題防雷：\n${trap1}` : ''}`,
+        keyLawArticle: law1 ? `${law1.lawName} ${law1.articleNo}` : undefined,
+        tags: [`#${chap.subjectId}`, `#第${chap.chapterNo}章`, `#核心爭點`]
+      };
+    });
+    return [...SEED_FLASHCARDS, ...chapterCards];
+  }, []);
+
+  const [cards, setCards] = useState<Flashcard[]>(allInitialCards);
   const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
